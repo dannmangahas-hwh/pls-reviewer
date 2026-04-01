@@ -13,6 +13,7 @@ export default function Page() {
         <div className="text-muted-foreground font-mono text-xs">
           (Press <kbd>d</kbd> to toggle dark mode)
         </div>
+        <Button/>
       </div>
     </div>
   )
