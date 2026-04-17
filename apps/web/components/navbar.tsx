@@ -22,7 +22,12 @@ export function Navbar() {
   const pathname = usePathname()
 
   return (
-    <header className="top-0 z-50 w-full border-b border-white/10 bg-black">
+    <header
+      className={cn(
+        "top-0 z-50 w-full border-b border-white/10 transition-colors",
+        pathname === "/subjects" ? "absolute bg-transparent" : "relative bg-black"
+      )}
+    >
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         <Link href="/" className="transition-opacity hover:opacity-90">
           <Logo />

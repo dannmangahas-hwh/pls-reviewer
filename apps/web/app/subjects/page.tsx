@@ -2,6 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
+import { SubjectsHero } from "@/components/subjects-hero"
 import {
   Landmark,
   Briefcase,
@@ -75,20 +76,11 @@ const subjects = [
 
 function SubjectsPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background pt-16 pb-32">
-      {/* Header Section */}
-      <section className="container mx-auto mb-20 px-6 text-center md:px-12 lg:px-24">
-        <h1 className="text-4xl leading-[1.1] font-black tracking-tight text-navy uppercase md:text-5xl lg:text-6xl">
-          CHOOSE YOUR <span className="text-gold">SUBJECT</span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed font-light text-muted-foreground md:text-xl">
-          Analyze historical patterns from 2006 to 2025. Master the topics that
-          matter most based on frequency and chair trends.
-        </p>
-      </section>
+    <div className="flex min-h-screen flex-col bg-background pb-32">
+      <SubjectsHero />
 
       {/* Grid Section */}
-      <section className="container mx-auto px-6 md:px-12 lg:px-24">
+      <section className="container mx-auto mt-20 px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {subjects.map((subject) => {
             const slug = `${subject.name.toLowerCase().replace(/\s+/g, "-")}-${subject.suffix.toLowerCase()}`
