@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import { notFound } from "next/navigation"
+import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { HashtagsBanner } from "@/components/hashtags-banner"
 import {
@@ -80,50 +81,54 @@ export default async function SubtopicsPage(props: {
           {/* Subtopics List */}
           <div className="flex flex-col gap-6">
             {topic.subtopics && topic.subtopics.length > 0 ? (
-              topic.subtopics.map((sub: any, index: number) => (
-                <Card
-                  key={index}
-                  className="group relative min-h-[140px] overflow-hidden rounded-lg border-none bg-navy py-0 shadow-md transition-all duration-300"
-                >
-                  {/* Background Image with Overlay */}
-                  <div className="absolute inset-0 z-0">
-                    <Image
-                      src={headerBg}
-                      alt="Card Background"
-                      fill
-                      className="object-cover opacity-20 grayscale transition-all duration-500 group-hover:scale-105 group-hover:opacity-30 group-hover:grayscale-0"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-r from-navy via-navy/95 to-navy/90" />
-                  </div>
-
-                  <CardHeader className="relative z-10 items-center space-y-0 p-8 xl:px-12">
-                    <div className="flex-1 space-y-3">
-                      <CardTitle className="text-[28px] leading-none font-black tracking-tight text-gold uppercase transition-colors group-hover:text-gold/90">
-                        {sub.title}
-                      </CardTitle>
-                      <CardDescription className="max-w-4xl text-[15px] leading-relaxed font-light text-white/70">
-                        {sub.description}
-                      </CardDescription>
-                    </div>
-
-                    <CardAction className="relative z-10 mt-4 flex flex-col items-start justify-center self-center md:mt-0 md:w-64 md:items-end">
-                      <Badge
-                        variant="outline"
-                        className="mb-6 border-gold/50 text-[10px] font-bold tracking-widest text-gold uppercase"
-                      >
-                        {sub.difficulty}
-                      </Badge>
-                      <div className="group/btn flex items-center gap-2 text-[10px] font-black tracking-[0.25em] text-gold uppercase transition-colors hover:text-gold/80">
-                        START REVIEWING
-                        <div className="flex items-center -space-x-1.5 opacity-90 transition-transform group-hover/btn:translate-x-1">
-                          <ChevronRight className="size-4" />
-                          <ChevronRight className="size-4" />
-                        </div>
+              topic.subtopics.map((sub: any, index: number) => {
+                const subSlug = sub.slug || sub.title.toLowerCase().replace(/\s+/g, "-")
+                return (
+                  <Link key={index} href={`/subjects/${slug}/${topicSlug}/${subSlug}`} className="block">
+                    <Card
+                      className="group relative min-h-[140px] overflow-hidden rounded-lg border-none bg-navy py-0 shadow-md transition-all duration-300 hover:ring-2 hover:ring-gold hover:ring-offset-2"
+                    >
+                      {/* Background Image with Overlay */}
+                      <div className="absolute inset-0 z-0">
+                        <Image
+                          src={headerBg}
+                          alt="Card Background"
+                          fill
+                          className="object-cover opacity-20 grayscale transition-all duration-500 group-hover:scale-105 group-hover:opacity-30 group-hover:grayscale-0"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-r from-navy via-navy/95 to-navy/90" />
                       </div>
-                    </CardAction>
-                  </CardHeader>
-                </Card>
-              ))
+
+                      <CardHeader className="relative z-10 items-center space-y-0 p-8 xl:px-12">
+                        <div className="flex-1 space-y-3">
+                          <CardTitle className="text-[28px] leading-none font-black tracking-tight text-gold uppercase transition-colors group-hover:text-gold/90">
+                            {sub.title}
+                          </CardTitle>
+                          <CardDescription className="max-w-4xl text-[15px] leading-relaxed font-light text-white/70">
+                            {sub.description}
+                          </CardDescription>
+                        </div>
+
+                        <CardAction className="relative z-10 mt-4 flex flex-col items-start justify-center self-center md:mt-0 md:w-64 md:items-end">
+                          <Badge
+                            variant="outline"
+                            className="mb-6 border-gold/50 text-[10px] font-bold tracking-widest text-gold uppercase"
+                          >
+                            {sub.difficulty}
+                          </Badge>
+                          <div className="group/btn flex items-center gap-2 text-[10px] font-black tracking-[0.25em] text-gold uppercase transition-colors hover:text-gold/80">
+                            START REVIEWING
+                            <div className="flex items-center -space-x-1.5 opacity-90 transition-transform group-hover/btn:translate-x-1">
+                              <ChevronRight className="size-4" />
+                              <ChevronRight className="size-4" />
+                            </div>
+                          </div>
+                        </CardAction>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                )
+              })
             ) : (
               <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
                 <p className="mb-2 text-2xl font-light text-muted-foreground">
