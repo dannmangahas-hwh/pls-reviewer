@@ -3,6 +3,7 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { HashtagsBanner } from "@/components/hashtags-banner"
 import { Badge } from "@workspace/ui/components/badge"
+import { Card, CardHeader, CardTitle, CardDescription } from "@workspace/ui/components/card"
 import { subjectsData } from "@/lib/subjects"
 import { mockQuestions } from "@/lib/mock-questions"
 import { QuestionCard } from "@/components/question-card"
@@ -71,7 +72,7 @@ export default async function QuestionsPage(props: {
       <section className="flex-1 bg-white px-6 py-12 md:px-12 lg:px-24">
         <div className="mx-auto max-w-5xl space-y-8">
           {/* Topic Banner Card */}
-          <div className="relative overflow-hidden rounded-md bg-navy shadow-lg">
+          <Card className="relative overflow-hidden rounded-md bg-navy shadow-lg border-none">
             <div className="absolute inset-0 z-0">
               <Image
                 src={justiceBg}
@@ -82,14 +83,14 @@ export default async function QuestionsPage(props: {
               <div className="absolute inset-0 bg-linear-to-r from-navy via-navy/90 to-transparent" />
             </div>
             
-            <div className="relative z-10 flex flex-col items-start justify-between p-8 md:flex-row md:p-12">
+            <CardHeader className="relative z-10 flex flex-col items-start justify-between p-8 md:flex-row md:p-12 space-y-0">
               <div className="max-w-2xl space-y-4">
-                <h2 className="text-4xl font-black tracking-tight text-gold uppercase">
+                <CardTitle className="text-4xl font-black tracking-tight text-gold uppercase">
                   {topic.title}
-                </h2>
-                <p className="text-[15px] leading-relaxed font-light text-white/80">
+                </CardTitle>
+                <CardDescription className="text-[15px] leading-relaxed font-light text-white/80">
                   {topic.description}
-                </p>
+                </CardDescription>
               </div>
               
               <div className="mt-6 md:mt-0">
@@ -100,8 +101,8 @@ export default async function QuestionsPage(props: {
                   {topic.difficulty}
                 </Badge>
               </div>
-            </div>
-          </div>
+            </CardHeader>
+          </Card>
 
           {/* Subtopic Banner (Optional, keeping it subtle since mockup doesn't explicitly show it, 
               but we need to know we are in WAGES etc.) 
