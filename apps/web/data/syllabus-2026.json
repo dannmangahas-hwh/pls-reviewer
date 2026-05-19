@@ -1,0 +1,2209 @@
+{
+  "subjects": [
+    {
+      "name": "Political and Public International Law",
+      "slug": "political-law",
+      "weight": "15%",
+      "topics": [
+        {
+          "roman": "I",
+          "title": "BASIC CONCEPTS",
+          "slug": "basic-concepts",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Nature, Concept, and Interpretation of a Constitution",
+              "slug": "nature-concept-and-interpretation-of-a-constitution"
+            },
+            {
+              "letter": "B",
+              "title": "Amendment and Revision",
+              "slug": "amendment-and-revision"
+            },
+            {
+              "letter": "C",
+              "title": "Declaration of Principles and State Policies",
+              "slug": "declaration-of-principles-and-state-policies"
+            },
+            {
+              "letter": "D",
+              "title": "Sovereignty",
+              "slug": "sovereignty"
+            },
+            {
+              "letter": "E",
+              "title": "State Immunity",
+              "slug": "state-immunity"
+            },
+            {
+              "letter": "F",
+              "title": "Separation of Powers",
+              "slug": "separation-of-powers"
+            },
+            {
+              "letter": "G",
+              "title": "Checks and Balances",
+              "slug": "checks-and-balances"
+            },
+            {
+              "letter": "H",
+              "title": "Delegation of Powers",
+              "slug": "delegation-of-powers"
+            },
+            {
+              "letter": "I",
+              "title": "Fundamental Powers of the State",
+              "slug": "fundamental-powers-of-the-state"
+            }
+          ]
+        },
+        {
+          "roman": "II",
+          "title": "NATIONAL TERRITORY",
+          "slug": "national-territory",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Scope (Terrestrial, Fluvial, and Aerial Domains)",
+              "slug": "scope"
+            },
+            {
+              "letter": "B",
+              "title": "Archipelagic Doctrine",
+              "slug": "archipelagic-doctrine"
+            },
+            {
+              "letter": "C",
+              "title": "Maritime Zones",
+              "slug": "maritime-zones"
+            }
+          ]
+        },
+        {
+          "roman": "III",
+          "title": "CITIZENSHIP",
+          "slug": "citizenship",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Who are Filipino Citizens",
+              "slug": "who-are-filipino-citizens"
+            },
+            {
+              "letter": "B",
+              "title": "Modes of Acquiring Citizenship",
+              "slug": "modes-of-acquiring-citizenship"
+            },
+            {
+              "letter": "C",
+              "title": "Natural-born and Naturalized Citizens",
+              "slug": "natural-born-and-naturalized-citizens"
+            },
+            {
+              "letter": "D",
+              "title": "Loss and Re-acquisition of Philippine Citizenship",
+              "slug": "loss-and-re-acquisition-of-philippine-citizenship"
+            },
+            {
+              "letter": "E",
+              "title": "Dual Citizenship and Dual Allegiance",
+              "slug": "dual-citizenship-and-dual-allegiance"
+            }
+          ]
+        },
+        {
+          "roman": "IV",
+          "title": "LEGISLATIVE DEPARTMENT",
+          "slug": "legislative-department",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Legislative Power",
+              "slug": "legislative-power"
+            },
+            {
+              "letter": "B",
+              "title": "Chambers of Congress; Composition; Qualifications",
+              "slug": "chambers-of-congress-composition-qualifications"
+            },
+            {
+              "letter": "C",
+              "title": "Declaration of the Existence of a State of War",
+              "slug": "declaration-of-the-existence-of-a-state-of-war"
+            },
+            {
+              "letter": "D",
+              "title": "Legislative Privileges, Inhibitions, and Disqualifications",
+              "slug": "legislative-privileges-inhibitions-and-disqualifications"
+            },
+            {
+              "letter": "E",
+              "title": "Quorum and Voting Majorities",
+              "slug": "quorum-and-voting-majorities"
+            },
+            {
+              "letter": "F",
+              "title": "Discipline of Members",
+              "slug": "discipline-of-members"
+            },
+            {
+              "letter": "G",
+              "title": "Lawmaking Process",
+              "slug": "lawmaking-process"
+            },
+            {
+              "letter": "H",
+              "title": "Commission on Appointments",
+              "slug": "commission-on-appointments"
+            }
+          ]
+        },
+        {
+          "roman": "V",
+          "title": "EXECUTIVE DEPARTMENT",
+          "slug": "executive-department",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Qualifications, Election, and Term of the President and Vice-President",
+              "slug": "qualifications-election-and-term-of-the-president-and-vice-president"
+            },
+            {
+              "letter": "B",
+              "title": "Privileges, Inhibitions, and Disqualifications",
+              "slug": "privileges-inhibitions-and-disqualifications"
+            },
+            {
+              "letter": "C",
+              "title": "Powers of the President",
+              "slug": "powers-of-the-president"
+            },
+            {
+              "letter": "D",
+              "title": "Rules of Succession",
+              "slug": "rules-of-succession"
+            }
+          ]
+        },
+        {
+          "roman": "VI",
+          "title": "JUDICIAL DEPARTMENT",
+          "slug": "judicial-department",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Concept of Judicial Power",
+              "slug": "concept-of-judicial-power"
+            },
+            {
+              "letter": "B",
+              "title": "Judicial Review",
+              "slug": "judicial-review"
+            },
+            {
+              "letter": "C",
+              "title": "Judicial Independence and Fiscal Autonomy",
+              "slug": "judicial-independence-and-fiscal-autonomy"
+            },
+            {
+              "letter": "D",
+              "title": "Appointments to the Judiciary",
+              "slug": "appointments-to-the-judiciary"
+            },
+            {
+              "letter": "E",
+              "title": "The Supreme Court",
+              "slug": "the-supreme-court"
+            }
+          ]
+        },
+        {
+          "roman": "VII",
+          "title": "CONSTITUTIONAL COMMISSIONS",
+          "slug": "constitutional-commissions",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Constitutional Safeguards to Ensure Independence",
+              "slug": "constitutional-safeguards-to-ensure-independence"
+            },
+            {
+              "letter": "B",
+              "title": "Common Provisions",
+              "slug": "common-provisions"
+            },
+            {
+              "letter": "C",
+              "title": "Powers, Functions, and Jurisdiction",
+              "slug": "powers-functions-and-jurisdiction"
+            },
+            {
+              "letter": "D",
+              "title": "Composition and Qualifications of Members",
+              "slug": "composition-and-qualifications-of-members"
+            },
+            {
+              "letter": "E",
+              "title": "Prohibited Offices and Interests",
+              "slug": "prohibited-offices-and-interests"
+            }
+          ]
+        },
+        {
+          "roman": "VIII",
+          "title": "CONSTITUTIONAL RIGHTS",
+          "slug": "constitutional-rights",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Due Process",
+              "slug": "due-process"
+            },
+            {
+              "letter": "B",
+              "title": "Equal Protection",
+              "slug": "equal-protection"
+            },
+            {
+              "letter": "C",
+              "title": "Arrests, Searches, and Seizures",
+              "slug": "arrests-searches-and-seizures"
+            },
+            {
+              "letter": "D",
+              "title": "Privacy of Communications and Correspondence",
+              "slug": "privacy-of-communications-and-correspondence"
+            },
+            {
+              "letter": "E",
+              "title": "Freedom of Speech and Expression",
+              "slug": "freedom-of-speech-and-expression"
+            },
+            {
+              "letter": "F",
+              "title": "Freedom of Religion",
+              "slug": "freedom-of-religion"
+            },
+            {
+              "letter": "G",
+              "title": "Liberty of Abode and Right to Travel",
+              "slug": "liberty-of-abode-and-right-to-travel"
+            },
+            {
+              "letter": "H",
+              "title": "Right to Information",
+              "slug": "right-to-information"
+            },
+            {
+              "letter": "I",
+              "title": "Right to Association",
+              "slug": "right-to-association"
+            },
+            {
+              "letter": "J",
+              "title": "Non-impairment of Contracts",
+              "slug": "non-impairment-of-contracts"
+            },
+            {
+              "letter": "K",
+              "title": "Free Access to Courts and Adequate Legal Assistance",
+              "slug": "free-access-to-courts-and-adequate-legal-assistance"
+            },
+            {
+              "letter": "L",
+              "title": "Custodial Investigation",
+              "slug": "custodial-investigation"
+            },
+            {
+              "letter": "M",
+              "title": "Rights of the Accused",
+              "slug": "rights-of-the-accused"
+            },
+            {
+              "letter": "N",
+              "title": "Right to Speedy Trial and Speedy Disposition of Cases",
+              "slug": "right-to-speedy-trial-and-speedy-disposition-of-cases"
+            },
+            {
+              "letter": "O",
+              "title": "Right Against Self-incrimination",
+              "slug": "right-against-self-incrimination"
+            },
+            {
+              "letter": "P",
+              "title": "Right Against Double Jeopardy",
+              "slug": "right-against-double-jeopardy"
+            },
+            {
+              "letter": "Q",
+              "title": "Right Against Involuntary Servitude",
+              "slug": "right-against-involuntary-servitude"
+            },
+            {
+              "letter": "R",
+              "title": "Right Against Excessive Fines, and Cruel and Inhuman Punishments",
+              "slug": "right-against-excessive-fines-and-cruel-and-inhuman-punishments"
+            },
+            {
+              "letter": "S",
+              "title": "Non-imprisonment for Debts",
+              "slug": "non-imprisonment-for-debts"
+            },
+            {
+              "letter": "T",
+              "title": "Ex Post Facto Laws and Bills of Attainder",
+              "slug": "ex-post-facto-laws-and-bills-of-attainder"
+            },
+            {
+              "letter": "U",
+              "title": "Writs of Habeas Corpus, Kalikasan, Habeas Data, and Amparo",
+              "slug": "writs-of-habeas-corpus-kalikasan-habeas-data-and-amparo"
+            },
+            {
+              "letter": "V",
+              "title": "Social Justice and Human Rights",
+              "slug": "social-justice-and-human-rights"
+            },
+            {
+              "letter": "W",
+              "title": "Economic, Social, and Cultural Rights",
+              "slug": "economic-social-and-cultural-rights"
+            },
+            {
+              "letter": "X",
+              "title": "Academic Freedom",
+              "slug": "academic-freedom"
+            }
+          ]
+        },
+        {
+          "roman": "IX",
+          "title": "NATIONAL ECONOMY AND PATRIMONY",
+          "slug": "national-economy-and-patrimony",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Regalian Doctrine – Republic v. Pasig Rizal Co. Inc., G.R. No. 213207,",
+              "slug": "regalian-doctrine-republic-v-pasig-rizal-co-inc-gr-no-213207"
+            },
+            {
+              "letter": "B",
+              "title": "Public Trust Doctrine – R.A. No. 11659 (New Public Service Act)",
+              "slug": "public-trust-doctrine-ra-no-11659"
+            },
+            {
+              "letter": "C",
+              "title": "Nationality and Citizenship Requirement Provisions",
+              "slug": "nationality-and-citizenship-requirement-provisions"
+            },
+            {
+              "letter": "D",
+              "title": "Exploration, Development, and Utilization of Natural Resources",
+              "slug": "exploration-development-and-utilization-of-natural-resources"
+            },
+            {
+              "letter": "E",
+              "title": "Acquisition, Ownership, and Transfer of Public and Private Lands",
+              "slug": "acquisition-ownership-and-transfer-of-public-and-private-lands"
+            },
+            {
+              "letter": "F",
+              "title": "Ancestral Domain – R.A. No. 8371, Chapters I-III",
+              "slug": "ancestral-domain-ra-no-8371-chapters-i-iii"
+            }
+          ]
+        },
+        {
+          "roman": "X",
+          "title": "ADMINISTRATIVE LAW",
+          "slug": "administrative-law",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "General Principles",
+              "slug": "general-principles"
+            },
+            {
+              "letter": "B",
+              "title": "Administrative Agencies",
+              "slug": "administrative-agencies"
+            },
+            {
+              "letter": "C",
+              "title": "Powers of Administrative Agencies",
+              "slug": "powers-of-administrative-agencies"
+            },
+            {
+              "letter": "D",
+              "title": "Judicial Recourse and Review",
+              "slug": "judicial-recourse-and-review"
+            }
+          ]
+        },
+        {
+          "roman": "XI",
+          "title": "LAW ON PUBLIC OFFICERS",
+          "slug": "law-on-public-officers",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "General Principles",
+              "slug": "general-principles"
+            },
+            {
+              "letter": "B",
+              "title": "Modes of Acquiring Title to Public Office",
+              "slug": "modes-of-acquiring-title-to-public-office"
+            },
+            {
+              "letter": "C",
+              "title": "Modes and Kinds of Appointment",
+              "slug": "modes-and-kinds-of-appointment"
+            },
+            {
+              "letter": "D",
+              "title": "Eligibility and Qualification Requirements",
+              "slug": "eligibility-and-qualification-requirements"
+            },
+            {
+              "letter": "E",
+              "title": "Disabilities and Inhibitions of Public Officers",
+              "slug": "disabilities-and-inhibitions-of-public-officers"
+            },
+            {
+              "letter": "F",
+              "title": "Powers and Duties of Public Officers",
+              "slug": "powers-and-duties-of-public-officers"
+            },
+            {
+              "letter": "G",
+              "title": "Rights of Public Officers",
+              "slug": "rights-of-public-officers"
+            },
+            {
+              "letter": "H",
+              "title": "Immunity of Public Officers",
+              "slug": "immunity-of-public-officers"
+            },
+            {
+              "letter": "I",
+              "title": "De Facto and De Jure Officers",
+              "slug": "de-facto-and-de-jure-officers"
+            },
+            {
+              "letter": "J",
+              "title": "Termination of Official Relation",
+              "slug": "termination-of-official-relation"
+            },
+            {
+              "letter": "K",
+              "title": "The Civil Service",
+              "slug": "the-civil-service"
+            },
+            {
+              "letter": "L",
+              "title": "Accountability of Public Officers",
+              "slug": "accountability-of-public-officers"
+            }
+          ]
+        },
+        {
+          "roman": "XII",
+          "title": "ELECTION LAW",
+          "slug": "election-law",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Suffrage",
+              "slug": "suffrage"
+            },
+            {
+              "letter": "B",
+              "title": "Candidacy",
+              "slug": "candidacy"
+            },
+            {
+              "letter": "C",
+              "title": "Campaign",
+              "slug": "campaign"
+            },
+            {
+              "letter": "D",
+              "title": "Remedies and Jurisdiction",
+              "slug": "remedies-and-jurisdiction"
+            },
+            {
+              "letter": "E",
+              "title": "Electoral Tribunals",
+              "slug": "electoral-tribunals"
+            },
+            {
+              "letter": "F",
+              "title": "Prosecution of Election Offenses (Exclude: Penal Provisions)",
+              "slug": "prosecution-of-election-offenses"
+            }
+          ]
+        },
+        {
+          "roman": "XIII",
+          "title": "LOCAL GOVERNMENTS",
+          "slug": "local-governments",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Principles of Local Autonomy",
+              "slug": "principles-of-local-autonomy"
+            },
+            {
+              "letter": "B",
+              "title": "Requisites for Creation, Conversion, Division, Merger, or Dissolution",
+              "slug": "requisites-for-creation-conversion-division-merger-or-dissolution"
+            },
+            {
+              "letter": "C",
+              "title": "Autonomous Regions and their Relation to the National Government",
+              "slug": "autonomous-regions-and-their-relation-to-the-national-government"
+            },
+            {
+              "letter": "D",
+              "title": "Local Government Units",
+              "slug": "local-government-units"
+            },
+            {
+              "letter": "E",
+              "title": "Local Elective and Appointive Officials",
+              "slug": "local-elective-and-appointive-officials"
+            }
+          ]
+        },
+        {
+          "roman": "XIV",
+          "title": "PUBLIC INTERNATIONAL LAW",
+          "slug": "public-international-law",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Sources of International Law",
+              "slug": "sources-of-international-law"
+            },
+            {
+              "letter": "B",
+              "title": "Sources of International Legal Obligation",
+              "slug": "sources-of-international-legal-obligation"
+            },
+            {
+              "letter": "C",
+              "title": "Subjects of International Law",
+              "slug": "subjects-of-international-law"
+            },
+            {
+              "letter": "D",
+              "title": "Relationship Between International and Domestic Law",
+              "slug": "relationship-between-international-and-domestic-law"
+            },
+            {
+              "letter": "E",
+              "title": "Jurisdiction of States",
+              "slug": "jurisdiction-of-states"
+            },
+            {
+              "letter": "F",
+              "title": "General Principles of Treaty Law",
+              "slug": "general-principles-of-treaty-law"
+            },
+            {
+              "letter": "G",
+              "title": "Doctrine of State Responsibility",
+              "slug": "doctrine-of-state-responsibility"
+            },
+            {
+              "letter": "H",
+              "title": "Treatment of Aliens",
+              "slug": "treatment-of-aliens"
+            },
+            {
+              "letter": "I",
+              "title": "International Human Rights Law",
+              "slug": "international-human-rights-law"
+            },
+            {
+              "letter": "J",
+              "title": "International Humanitarian Law",
+              "slug": "international-humanitarian-law"
+            },
+            {
+              "letter": "K",
+              "title": "Dispute Resolution",
+              "slug": "dispute-resolution"
+            },
+            {
+              "letter": "L",
+              "title": "Law of the Sea",
+              "slug": "law-of-the-sea"
+            },
+            {
+              "letter": "M",
+              "title": "International Environmental Law",
+              "slug": "international-environmental-law"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Commercial and Taxation Laws",
+      "slug": "commercial-law",
+      "weight": "20%",
+      "topics": [
+        {
+          "roman": "I",
+          "title": "BUSINESS ORGANIZATIONS",
+          "slug": "business-organizations",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Corporations – R.A. No. 11232",
+              "slug": "corporations-ra-no-11232"
+            },
+            {
+              "letter": "B",
+              "title": "Partnerships",
+              "slug": "partnerships"
+            }
+          ]
+        },
+        {
+          "roman": "II",
+          "title": "INSURANCE",
+          "slug": "insurance",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Concept of Insurance",
+              "slug": "concept-of-insurance"
+            },
+            {
+              "letter": "B",
+              "title": "Insurable Interest",
+              "slug": "insurable-interest"
+            },
+            {
+              "letter": "C",
+              "title": "Concealment",
+              "slug": "concealment"
+            },
+            {
+              "letter": "D",
+              "title": "Representation",
+              "slug": "representation"
+            },
+            {
+              "letter": "E",
+              "title": "Policy",
+              "slug": "policy"
+            },
+            {
+              "letter": "F",
+              "title": "Warranties",
+              "slug": "warranties"
+            },
+            {
+              "letter": "G",
+              "title": "Premium",
+              "slug": "premium"
+            },
+            {
+              "letter": "H",
+              "title": "Loss",
+              "slug": "loss"
+            },
+            {
+              "letter": "I",
+              "title": "Notice and Proof of Loss",
+              "slug": "notice-and-proof-of-loss"
+            },
+            {
+              "letter": "J",
+              "title": "Double Insurance and Overinsurance",
+              "slug": "double-insurance-and-overinsurance"
+            },
+            {
+              "letter": "K",
+              "title": "Reinsurance",
+              "slug": "reinsurance"
+            },
+            {
+              "letter": "L",
+              "title": "Rescission of Insurance Contracts",
+              "slug": "rescission-of-insurance-contracts"
+            }
+          ]
+        },
+        {
+          "roman": "III",
+          "title": "TRANSPORTATION",
+          "slug": "transportation",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Common Carriers",
+              "slug": "common-carriers"
+            },
+            {
+              "letter": "B",
+              "title": "Vigilance over Goods",
+              "slug": "vigilance-over-goods"
+            },
+            {
+              "letter": "C",
+              "title": "Safety of Passengers",
+              "slug": "safety-of-passengers"
+            }
+          ]
+        },
+        {
+          "roman": "IV",
+          "title": "BANKING",
+          "slug": "banking",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Secrecy of Bank Deposits – R.A. No. 1405 and R.A. No. 6426, as amended",
+              "slug": "secrecy-of-bank-deposits-ra-no-1405-and-ra-no-6426-as-amended"
+            },
+            {
+              "letter": "B",
+              "title": "General Banking Law – R.A. No. 8791",
+              "slug": "general-banking-law-ra-no-8791"
+            },
+            {
+              "letter": "C",
+              "title": "Deposit Insurance – R.A. No. 3591, as amended by R.A. No. 11840",
+              "slug": "deposit-insurance-ra-no-3591-as-amended-by-ra-no-11840"
+            },
+            {
+              "letter": "D",
+              "title": "Anti-Money Laundering – R.A. No. 9160, as amended by R.A. No. 9194,",
+              "slug": "anti-money-laundering-ra-no-9160-as-amended-by-ra-no-9194"
+            },
+            {
+              "letter": "E",
+              "title": "The Central Bank – R.A. No. 7653, as amended by R.A. No. 11211",
+              "slug": "the-central-bank-ra-no-7653-as-amended-by-ra-no-11211"
+            }
+          ]
+        },
+        {
+          "roman": "V",
+          "title": "INTELLECTUAL PROPERTY",
+          "slug": "intellectual-property",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Patents",
+              "slug": "patents"
+            },
+            {
+              "letter": "B",
+              "title": "Trademarks",
+              "slug": "trademarks"
+            },
+            {
+              "letter": "C",
+              "title": "Copyright",
+              "slug": "copyright"
+            }
+          ]
+        },
+        {
+          "roman": "VI",
+          "title": "SPECIAL COMMERCIAL LAWS",
+          "slug": "special-commercial-laws",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "R.A. No. 10142 (Financial Rehabilitation and Insolvency Act)",
+              "slug": "ra-no-10142"
+            },
+            {
+              "letter": "B",
+              "title": "R.A. No. 8792 (Electronic Commerce Act)",
+              "slug": "ra-no-8792"
+            },
+            {
+              "letter": "C",
+              "title": "Commonwealth Act No. 146, as amended by R.A. No. 11659 (Public Service",
+              "slug": "commonwealth-act-no-146-as-amended-by-ra-no-11659-public-service"
+            },
+            {
+              "letter": "D",
+              "title": "R.A. No. 10667 (Philippine Competition Act)",
+              "slug": "ra-no-10667"
+            }
+          ]
+        },
+        {
+          "roman": "VIII",
+          "title": "TAXATION LAW",
+          "slug": "taxation-law",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "General Principles",
+              "slug": "general-principles"
+            },
+            {
+              "letter": "B",
+              "title": "National Taxation – National Internal Revenue Code of 1997 [NIRC], as",
+              "slug": "national-taxation-national-internal-revenue-code-of-1997-nirc-as"
+            },
+            {
+              "letter": "C",
+              "title": "Local Taxation – R.A. No. 7160",
+              "slug": "local-taxation-ra-no-7160"
+            },
+            {
+              "letter": "D",
+              "title": "Judicial Remedies",
+              "slug": "judicial-remedies"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Civil Law and Land Titles and Deeds",
+      "slug": "civil-law",
+      "weight": "20%",
+      "topics": [
+        {
+          "roman": "I",
+          "title": "EFFECT AND APPLICATION OF LAWS",
+          "slug": "effect-and-application-of-laws",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "When Laws Take Effect – NCC, Art. 2",
+              "slug": "when-laws-take-effect-ncc-art-2"
+            },
+            {
+              "letter": "B",
+              "title": "Ignorance of the Law – NCC, Art. 3",
+              "slug": "ignorance-of-the-law-ncc-art-3"
+            },
+            {
+              "letter": "C",
+              "title": "Retroactivity of Laws – NCC, Art. 4",
+              "slug": "retroactivity-of-laws-ncc-art-4"
+            },
+            {
+              "letter": "D",
+              "title": "Mandatory and Prohibitory Laws – NCC, Art. 5",
+              "slug": "mandatory-and-prohibitory-laws-ncc-art-5"
+            },
+            {
+              "letter": "E",
+              "title": "Waiver – NCC, Art. 6",
+              "slug": "waiver-ncc-art-6"
+            },
+            {
+              "letter": "F",
+              "title": "Repeal and Nullification of Laws – NCC, Art. 7",
+              "slug": "repeal-and-nullification-of-laws-ncc-art-7"
+            },
+            {
+              "letter": "G",
+              "title": "Judicial Decisions – NCC, Art. 8",
+              "slug": "judicial-decisions-ncc-art-8"
+            },
+            {
+              "letter": "H",
+              "title": "Legal Periods – NCC, Art. 13; Revised Administrative Code of 1987, Book I,",
+              "slug": "legal-periods-ncc-art-13-revised-administrative-code-of-1987-book-i"
+            },
+            {
+              "letter": "I",
+              "title": "Territoriality of Penal Laws – NCC, Art. 14",
+              "slug": "territoriality-of-penal-laws-ncc-art-14"
+            },
+            {
+              "letter": "J",
+              "title": "Conflict of Laws – NCC, Arts. 15-18",
+              "slug": "conflict-of-laws-ncc-arts-15-18"
+            }
+          ]
+        },
+        {
+          "roman": "II",
+          "title": "PERSONS",
+          "slug": "persons",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Juridical Capacity",
+              "slug": "juridical-capacity"
+            },
+            {
+              "letter": "B",
+              "title": "Capacity to Act",
+              "slug": "capacity-to-act"
+            }
+          ]
+        },
+        {
+          "roman": "III",
+          "title": "FAMILY RELATIONS",
+          "slug": "family-relations",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Marriage – FC, Articles 1-148; 1987 Constitution, Art. II, Sec. 12 and Art. XV",
+              "slug": "marriage-fc-articles-1-148-1987-constitution-art-ii-sec-12-and-art-xv"
+            },
+            {
+              "letter": "B",
+              "title": "Family Relations",
+              "slug": "family-relations"
+            }
+          ]
+        },
+        {
+          "roman": "IV",
+          "title": "CIVIL REGISTER",
+          "slug": "civil-register",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Required Entries – NCC, Arts. 407-408",
+              "slug": "required-entries-ncc-arts-407-408"
+            },
+            {
+              "letter": "B",
+              "title": "Correction of Entries",
+              "slug": "correction-of-entries"
+            }
+          ]
+        },
+        {
+          "roman": "V",
+          "title": "PROPERTY, OWNERSHIP, AND ITS MODIFICATIONS",
+          "slug": "property-ownership-and-its-modifications",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Property",
+              "slug": "property"
+            },
+            {
+              "letter": "B",
+              "title": "Ownership",
+              "slug": "ownership"
+            },
+            {
+              "letter": "C",
+              "title": "Modes of Acquiring Ownership",
+              "slug": "modes-of-acquiring-ownership"
+            }
+          ]
+        },
+        {
+          "roman": "VI",
+          "title": "LAND TITLES AND DEEDS",
+          "slug": "land-titles-and-deeds",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Torrens System",
+              "slug": "torrens-system"
+            },
+            {
+              "letter": "B",
+              "title": "Regalian Doctrine",
+              "slug": "regalian-doctrine"
+            },
+            {
+              "letter": "C",
+              "title": "Nationality Restrictions on Land Ownership",
+              "slug": "nationality-restrictions-on-land-ownership"
+            },
+            {
+              "letter": "D",
+              "title": "Original Registration",
+              "slug": "original-registration"
+            },
+            {
+              "letter": "E",
+              "title": "Confirmation of Imperfect Title – R.A. No. 11573",
+              "slug": "confirmation-of-imperfect-title-ra-no-11573"
+            },
+            {
+              "letter": "F",
+              "title": "Certificate of Title",
+              "slug": "certificate-of-title"
+            },
+            {
+              "letter": "G",
+              "title": "Subsequent Registration",
+              "slug": "subsequent-registration"
+            },
+            {
+              "letter": "H",
+              "title": "Non-registrable Properties",
+              "slug": "non-registrable-properties"
+            },
+            {
+              "letter": "I",
+              "title": "Dealings with Unregistered Lands",
+              "slug": "dealings-with-unregistered-lands"
+            },
+            {
+              "letter": "J",
+              "title": "Assurance Fund",
+              "slug": "assurance-fund"
+            },
+            {
+              "letter": "K",
+              "title": "Reconstitution of Title – R.A. No. 26",
+              "slug": "reconstitution-of-title-ra-no-26"
+            }
+          ]
+        },
+        {
+          "roman": "VII",
+          "title": "SUCCESSION",
+          "slug": "succession",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Definition – NCC, Arts. 774 and 712",
+              "slug": "definition-ncc-arts-774-and-712"
+            },
+            {
+              "letter": "B",
+              "title": "Elements",
+              "slug": "elements"
+            },
+            {
+              "letter": "C",
+              "title": "Testamentary Succession – NCC, Arts. 783-959",
+              "slug": "testamentary-succession-ncc-arts-783-959"
+            },
+            {
+              "letter": "D",
+              "title": "Intestate Succession – NCC, Arts. 960-1014",
+              "slug": "intestate-succession-ncc-arts-960-1014"
+            },
+            {
+              "letter": "E",
+              "title": "Common Provisions – NCC, Arts. 1015-1105",
+              "slug": "common-provisions-ncc-arts-1015-1105"
+            },
+            {
+              "letter": "F",
+              "title": "Distribution of Estate",
+              "slug": "distribution-of-estate"
+            }
+          ]
+        },
+        {
+          "roman": "VIII",
+          "title": "OBLIGATIONS AND CONTRACTS",
+          "slug": "obligations-and-contracts",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Obligations",
+              "slug": "obligations"
+            },
+            {
+              "letter": "B",
+              "title": "Contracts",
+              "slug": "contracts"
+            }
+          ]
+        },
+        {
+          "roman": "IX",
+          "title": "SPECIAL CONTRACTS",
+          "slug": "special-contracts",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Sale",
+              "slug": "sale"
+            },
+            {
+              "letter": "B",
+              "title": "Lease",
+              "slug": "lease"
+            },
+            {
+              "letter": "C",
+              "title": "Agency",
+              "slug": "agency"
+            },
+            {
+              "letter": "D",
+              "title": "Credit Transactions",
+              "slug": "credit-transactions"
+            }
+          ]
+        },
+        {
+          "roman": "X",
+          "title": "QUASI-CONTRACTS",
+          "slug": "quasi-contracts",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Definition",
+              "slug": "definition"
+            },
+            {
+              "letter": "B",
+              "title": "Kinds",
+              "slug": "kinds"
+            },
+            {
+              "letter": "C",
+              "title": "Other Quasi-contracts",
+              "slug": "other-quasi-contracts"
+            }
+          ]
+        },
+        {
+          "roman": "XI",
+          "title": "TORTS AND QUASI-DELICTS",
+          "slug": "torts-and-quasi-delicts",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Principles",
+              "slug": "principles"
+            },
+            {
+              "letter": "B",
+              "title": "The Tortfeasor",
+              "slug": "the-tortfeasor"
+            },
+            {
+              "letter": "C",
+              "title": "Proximate Cause",
+              "slug": "proximate-cause"
+            },
+            {
+              "letter": "D",
+              "title": "Classification of Torts",
+              "slug": "classification-of-torts"
+            },
+            {
+              "letter": "E",
+              "title": "Defenses",
+              "slug": "defenses"
+            },
+            {
+              "letter": "F",
+              "title": "Nuisance",
+              "slug": "nuisance"
+            },
+            {
+              "letter": "G",
+              "title": "Medical Negligence and Malpractice",
+              "slug": "medical-negligence-and-malpractice"
+            }
+          ]
+        },
+        {
+          "roman": "XII",
+          "title": "DAMAGES",
+          "slug": "damages",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "General Considerations",
+              "slug": "general-considerations"
+            },
+            {
+              "letter": "B",
+              "title": "Kinds",
+              "slug": "kinds"
+            },
+            {
+              "letter": "C",
+              "title": "Damages in Case of Death",
+              "slug": "damages-in-case-of-death"
+            },
+            {
+              "letter": "D",
+              "title": "Duty of Injured Party",
+              "slug": "duty-of-injured-party"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Labor and Social Legislation",
+      "slug": "labor-law",
+      "weight": "10%",
+      "topics": [
+        {
+          "roman": "I",
+          "title": "BASIC PRINCIPLES AND CONCEPTS",
+          "slug": "basic-principles-and-concepts",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Legal Basis",
+              "slug": "legal-basis"
+            },
+            {
+              "letter": "B",
+              "title": "State Labor Policies",
+              "slug": "state-labor-policies"
+            }
+          ]
+        },
+        {
+          "roman": "II",
+          "title": "RECRUITMENT AND PLACEMENT",
+          "slug": "recruitment-and-placement",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Definition of Recruitment and Placement",
+              "slug": "definition-of-recruitment-and-placement"
+            },
+            {
+              "letter": "B",
+              "title": "Local Employment – LC, Title I",
+              "slug": "local-employment-lc-title-i"
+            },
+            {
+              "letter": "C",
+              "title": "Overseas Employment – R.A. No. 8042, as amended",
+              "slug": "overseas-employment-ra-no-8042-as-amended"
+            },
+            {
+              "letter": "D",
+              "title": "Regulation of Recruitment and Placement Activities",
+              "slug": "regulation-of-recruitment-and-placement-activities"
+            }
+          ]
+        },
+        {
+          "roman": "III",
+          "title": "EMPLOYMENT RELATIONSHIP",
+          "slug": "employment-relationship",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Employer–Employee Relationship",
+              "slug": "employeremployee-relationship"
+            },
+            {
+              "letter": "B",
+              "title": "Contracting – LC; D.O. No. 174, s. 2017; Executive Order [E.O.] No. 51;",
+              "slug": "contracting-lc-do-no-174-s-2017-executive-order-eo-no-51"
+            },
+            {
+              "letter": "C",
+              "title": "Kinds of Employment",
+              "slug": "kinds-of-employment"
+            }
+          ]
+        },
+        {
+          "roman": "IV",
+          "title": "LABOR STANDARDS",
+          "slug": "labor-standards",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Conditions of Employment",
+              "slug": "conditions-of-employment"
+            },
+            {
+              "letter": "B",
+              "title": "Wages – LC and its Implementing Rules and Regulations (IRR); R.A. No. 6727,",
+              "slug": "wages-lc-and-its-implementing-rules-and-regulations-ra-no-6727"
+            },
+            {
+              "letter": "C",
+              "title": "Leaves",
+              "slug": "leaves"
+            },
+            {
+              "letter": "D",
+              "title": "Telecommuting – R.A. No. 11165",
+              "slug": "telecommuting-ra-no-11165"
+            },
+            {
+              "letter": "E",
+              "title": "Working Conditions for Special Workers",
+              "slug": "working-conditions-for-special-workers"
+            },
+            {
+              "letter": "F",
+              "title": "Working Conditions for Special Groups of Employees",
+              "slug": "working-conditions-for-special-groups-of-employees"
+            },
+            {
+              "letter": "G",
+              "title": "Sexual Harassment in the Work Environment – R.A. No. 7877; R.A. No. 11313",
+              "slug": "sexual-harassment-in-the-work-environment-ra-no-7877-ra-no-11313"
+            },
+            {
+              "letter": "H",
+              "title": "Management Prerogative",
+              "slug": "management-prerogative"
+            }
+          ]
+        },
+        {
+          "roman": "V",
+          "title": "LABOR RELATIONS",
+          "slug": "labor-relations",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Right to Self-organization",
+              "slug": "right-to-self-organization"
+            },
+            {
+              "letter": "B",
+              "title": "Bargaining Unit",
+              "slug": "bargaining-unit"
+            },
+            {
+              "letter": "C",
+              "title": "Bargaining Representative",
+              "slug": "bargaining-representative"
+            },
+            {
+              "letter": "D",
+              "title": "Bystander Rule",
+              "slug": "bystander-rule"
+            },
+            {
+              "letter": "E",
+              "title": "Rights, Terms, and Conditions of Membership",
+              "slug": "rights-terms-and-conditions-of-membership"
+            },
+            {
+              "letter": "F",
+              "title": "Union Chartering or Registration",
+              "slug": "union-chartering-or-registration"
+            },
+            {
+              "letter": "G",
+              "title": "Unfair Labor Practice",
+              "slug": "unfair-labor-practice"
+            },
+            {
+              "letter": "H",
+              "title": "Peaceful Concerted Activities – see also R.A. No. 6727",
+              "slug": "peaceful-concerted-activities-see-also-ra-no-6727"
+            }
+          ]
+        },
+        {
+          "roman": "VI",
+          "title": "SUSPENSION AND TERMINATION OF EMPLOYMENT",
+          "slug": "suspension-and-termination-of-employment",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Termination or Suspension by Employer",
+              "slug": "termination-or-suspension-by-employer"
+            },
+            {
+              "letter": "B",
+              "title": "Termination by employee",
+              "slug": "termination-by-employee"
+            },
+            {
+              "letter": "C",
+              "title": "Illegal Dismissal",
+              "slug": "illegal-dismissal"
+            },
+            {
+              "letter": "D",
+              "title": "Retirement – R.A. No. 7641 and its IRR; Labor Advisory on Retirement Pay,",
+              "slug": "retirement-ra-no-7641-and-its-irr-labor-advisory-on-retirement-pay"
+            }
+          ]
+        },
+        {
+          "roman": "VII",
+          "title": "SOCIAL LEGISLATION",
+          "slug": "social-legislation",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Social Security – R.A. No. 11199",
+              "slug": "social-security-ra-no-11199"
+            },
+            {
+              "letter": "B",
+              "title": "Government Service Insurance – R.A. No. 8291",
+              "slug": "government-service-insurance-ra-no-8291"
+            },
+            {
+              "letter": "C",
+              "title": "Limited Portability Scheme – R.A. No. 7699",
+              "slug": "limited-portability-scheme-ra-no-7699"
+            },
+            {
+              "letter": "D",
+              "title": "Disability and Death Benefits",
+              "slug": "disability-and-death-benefits"
+            }
+          ]
+        },
+        {
+          "roman": "VIII",
+          "title": "LABOR ADJUDICATION: JURISDICTION & REMEDIES",
+          "slug": "labor-adjudication-jurisdiction-and-remedies",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Labor Adjudication Agencies and their Jurisdiction",
+              "slug": "labor-adjudication-agencies-and-their-jurisdiction"
+            },
+            {
+              "letter": "B",
+              "title": "Procedure and Remedies",
+              "slug": "procedure-and-remedies"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Criminal Law",
+      "slug": "criminal-law",
+      "weight": "10%",
+      "topics": [
+        {
+          "roman": "I",
+          "title": "FUNDAMENTAL PRINCIPLES",
+          "slug": "fundamental-principles",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Construction or Interpretation of Penal Laws",
+              "slug": "construction-or-interpretation-of-penal-laws"
+            },
+            {
+              "letter": "B",
+              "title": "Nullum Crimen, Nulla Poena Sine Lege",
+              "slug": "nullum-crimen-nulla-poena-sine-lege"
+            },
+            {
+              "letter": "C",
+              "title": "Mala In Se and Mala Prohibita",
+              "slug": "mala-in-se-and-mala-prohibita"
+            },
+            {
+              "letter": "D",
+              "title": "Cardinal Principles of Criminal Law",
+              "slug": "cardinal-principles-of-criminal-law"
+            },
+            {
+              "letter": "E",
+              "title": "Constitutional Limitations on the Power to Enact Penal Laws",
+              "slug": "constitutional-limitations-on-the-power-to-enact-penal-laws"
+            }
+          ]
+        },
+        {
+          "roman": "II",
+          "title": "FELONIES AND CRIMINAL LIABILITY",
+          "slug": "felonies-and-criminal-liability",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Felonies",
+              "slug": "felonies"
+            },
+            {
+              "letter": "B",
+              "title": "Criminal Liability",
+              "slug": "criminal-liability"
+            },
+            {
+              "letter": "C",
+              "title": "Penalties",
+              "slug": "penalties"
+            },
+            {
+              "letter": "D",
+              "title": "Extinction of Criminal Liability",
+              "slug": "extinction-of-criminal-liability"
+            },
+            {
+              "letter": "E",
+              "title": "Civil Liability Ex Delicto",
+              "slug": "civil-liability-ex-delicto"
+            }
+          ]
+        },
+        {
+          "roman": "III",
+          "title": "CRIMES AND THEIR PENALTIES",
+          "slug": "crimes-and-their-penalties",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Title One – Crimes against National Security and the Law of Nations",
+              "slug": "title-one-crimes-against-national-security-and-the-law-of-nations"
+            },
+            {
+              "letter": "B",
+              "title": "Title Two – Crimes against the Fundamental Laws of the State",
+              "slug": "title-two-crimes-against-the-fundamental-laws-of-the-state"
+            },
+            {
+              "letter": "C",
+              "title": "Title Three – Crimes against Public Order",
+              "slug": "title-three-crimes-against-public-order"
+            },
+            {
+              "letter": "D",
+              "title": "Title Four – Crimes against Public Interest",
+              "slug": "title-four-crimes-against-public-interest"
+            },
+            {
+              "letter": "E",
+              "title": "Dangerous Drugs Crimes – R.A. No. 9165, as amended by R.A. No. 10640",
+              "slug": "dangerous-drugs-crimes-ra-no-9165-as-amended-by-ra-no-10640"
+            },
+            {
+              "letter": "F",
+              "title": "Title Six – Crimes against Public Morals",
+              "slug": "title-six-crimes-against-public-morals"
+            },
+            {
+              "letter": "G",
+              "title": "Title Seven – Crimes Committed by Public Officers",
+              "slug": "title-seven-crimes-committed-by-public-officers"
+            },
+            {
+              "letter": "H",
+              "title": "Title Eight – Crimes against Persons",
+              "slug": "title-eight-crimes-against-persons"
+            },
+            {
+              "letter": "I",
+              "title": "Title Nine – Crimes against Personal Liberty and Security",
+              "slug": "title-nine-crimes-against-personal-liberty-and-security"
+            },
+            {
+              "letter": "J",
+              "title": "Title Ten – Crimes against Property",
+              "slug": "title-ten-crimes-against-property"
+            },
+            {
+              "letter": "K",
+              "title": "Title Eleven – Crimes against Chastity",
+              "slug": "title-eleven-crimes-against-chastity"
+            },
+            {
+              "letter": "L",
+              "title": "Title Twelve – Crimes against the Civil Status of Persons",
+              "slug": "title-twelve-crimes-against-the-civil-status-of-persons"
+            },
+            {
+              "letter": "M",
+              "title": "Title Thirteen – Crimes against Honor",
+              "slug": "title-thirteen-crimes-against-honor"
+            },
+            {
+              "letter": "N",
+              "title": "Title Fourteen – Quasi-offenses – Morales v. People, G.R. No. 240337,",
+              "slug": "title-fourteen-quasi-offenses-morales-v-people-gr-no-240337"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remedial Law, Legal and Judicial Ethics, with Practical Exercises",
+      "slug": "remedial-law",
+      "weight": "25%",
+      "topics": [
+        {
+          "roman": "I",
+          "title": "GENERAL PRINCIPLES",
+          "slug": "general-principles",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Concept and Nature of Remedial Law",
+              "slug": "concept-and-nature-of-remedial-law"
+            },
+            {
+              "letter": "B",
+              "title": "Procedural Laws Applicable to Actions Pending at the Time of Promulgation",
+              "slug": "procedural-laws-applicable-to-actions-pending-at-the-time-of-promulgation"
+            },
+            {
+              "letter": "C",
+              "title": "Construction of Procedural Rules",
+              "slug": "construction-of-procedural-rules"
+            },
+            {
+              "letter": "D",
+              "title": "Rule-making Power of the Supreme Court",
+              "slug": "rule-making-power-of-the-supreme-court"
+            },
+            {
+              "letter": "E",
+              "title": "Classification of Philippine Courts",
+              "slug": "classification-of-philippine-courts"
+            },
+            {
+              "letter": "F",
+              "title": "Hierarchy of Courts",
+              "slug": "hierarchy-of-courts"
+            },
+            {
+              "letter": "G",
+              "title": "Doctrine of Non-interference or Judicial Stability",
+              "slug": "doctrine-of-non-interference-or-judicial-stability"
+            }
+          ]
+        },
+        {
+          "roman": "II",
+          "title": "JURISDICTION",
+          "slug": "jurisdiction",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Concept",
+              "slug": "concept"
+            },
+            {
+              "letter": "B",
+              "title": "Subject Matter Jurisdiction",
+              "slug": "subject-matter-jurisdiction"
+            },
+            {
+              "letter": "C",
+              "title": "Acquired Jurisdiction",
+              "slug": "acquired-jurisdiction"
+            },
+            {
+              "letter": "D",
+              "title": "Jurisdiction of Philippine Courts and Tribunals",
+              "slug": "jurisdiction-of-philippine-courts-and-tribunals"
+            }
+          ]
+        },
+        {
+          "roman": "III",
+          "title": "CIVIL PROCEDURE",
+          "slug": "civil-procedure",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Classification of Actions",
+              "slug": "classification-of-actions"
+            },
+            {
+              "letter": "B",
+              "title": "Cause of Action – Rule 2",
+              "slug": "cause-of-action-rule-2"
+            },
+            {
+              "letter": "C",
+              "title": "Parties to Civil Actions – Rule 3",
+              "slug": "parties-to-civil-actions-rule-3"
+            },
+            {
+              "letter": "D",
+              "title": "Venue – Rule 4",
+              "slug": "venue-rule-4"
+            },
+            {
+              "letter": "E",
+              "title": "Pleadings",
+              "slug": "pleadings"
+            },
+            {
+              "letter": "F",
+              "title": "Summons – Rule 14",
+              "slug": "summons-rule-14"
+            },
+            {
+              "letter": "G",
+              "title": "Motions – Rule 15",
+              "slug": "motions-rule-15"
+            },
+            {
+              "letter": "H",
+              "title": "Dismissal and Default",
+              "slug": "dismissal-and-default"
+            },
+            {
+              "letter": "I",
+              "title": "Pre-trial – Rule 18 and A.M. No. 03-1-09-SC",
+              "slug": "pre-trial-rule-18-and-am-no-03-1-09-sc"
+            },
+            {
+              "letter": "J",
+              "title": "Intervention – Rule 19",
+              "slug": "intervention-rule-19"
+            },
+            {
+              "letter": "K",
+              "title": "Calendar of Cases – Rule 20",
+              "slug": "calendar-of-cases-rule-20"
+            },
+            {
+              "letter": "L",
+              "title": "Subpoena – Rule 21",
+              "slug": "subpoena-rule-21"
+            },
+            {
+              "letter": "M",
+              "title": "Computation of Time – Rule 22",
+              "slug": "computation-of-time-rule-22"
+            },
+            {
+              "letter": "N",
+              "title": "Modes of Discovery – Rules 23-29",
+              "slug": "modes-of-discovery-rules-23-29"
+            },
+            {
+              "letter": "O",
+              "title": "Trial – Rule 30",
+              "slug": "trial-rule-30"
+            },
+            {
+              "letter": "P",
+              "title": "Consolidation or Severance – Rule 31",
+              "slug": "consolidation-or-severance-rule-31"
+            },
+            {
+              "letter": "Q",
+              "title": "Demurrer to Evidence – Rule 33",
+              "slug": "demurrer-to-evidence-rule-33"
+            },
+            {
+              "letter": "R",
+              "title": "Judgments and Final Orders",
+              "slug": "judgments-and-final-orders"
+            },
+            {
+              "letter": "S",
+              "title": "Post-judgment Remedies",
+              "slug": "post-judgment-remedies"
+            },
+            {
+              "letter": "T",
+              "title": "Execution, Satisfaction, and Effect of Judgments – Rule 39",
+              "slug": "execution-satisfaction-and-effect-of-judgments-rule-39"
+            }
+          ]
+        },
+        {
+          "roman": "IV",
+          "title": "PROVISIONAL REMEDIES",
+          "slug": "provisional-remedies",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Nature and Purpose",
+              "slug": "nature-and-purpose"
+            },
+            {
+              "letter": "B",
+              "title": "Preliminary Attachment – Rule 57",
+              "slug": "preliminary-attachment-rule-57"
+            },
+            {
+              "letter": "C",
+              "title": "Preliminary Injunction – Rule 58",
+              "slug": "preliminary-injunction-rule-58"
+            },
+            {
+              "letter": "D",
+              "title": "Receivership – Rule 59",
+              "slug": "receivership-rule-59"
+            },
+            {
+              "letter": "E",
+              "title": "Replevin – Rule 60",
+              "slug": "replevin-rule-60"
+            },
+            {
+              "letter": "F",
+              "title": "Support Pendente Lite – Rule 61",
+              "slug": "support-pendente-lite-rule-61"
+            },
+            {
+              "letter": "G",
+              "title": "Provisional Deposit – Rule 135, Secs. 5(g) and 6, in relation to Lorenzo",
+              "slug": "provisional-deposit-rule-135-secs-5-and-6-in-relation-to-lorenzo"
+            }
+          ]
+        },
+        {
+          "roman": "V",
+          "title": "SPECIAL CIVIL ACTIONS",
+          "slug": "special-civil-actions",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Concept",
+              "slug": "concept"
+            },
+            {
+              "letter": "B",
+              "title": "Interpleader – Rule 62",
+              "slug": "interpleader-rule-62"
+            },
+            {
+              "letter": "C",
+              "title": "Declaratory Relief and Similar Remedies – Rule 63",
+              "slug": "declaratory-relief-and-similar-remedies-rule-63"
+            },
+            {
+              "letter": "D",
+              "title": "Certiorari, Prohibition, and Mandamus – Rule 65",
+              "slug": "certiorari-prohibition-and-mandamus-rule-65"
+            },
+            {
+              "letter": "E",
+              "title": "Quo Warranto – Rule 66",
+              "slug": "quo-warranto-rule-66"
+            },
+            {
+              "letter": "F",
+              "title": "Expropriation – Rule 67; R.A. No. 8974, Sec. 4",
+              "slug": "expropriation-rule-67-ra-no-8974-sec-4"
+            },
+            {
+              "letter": "G",
+              "title": "Foreclosure of Real Estate Mortgage – Rule 68; R.A. No. 8791, Sec. 47",
+              "slug": "foreclosure-of-real-estate-mortgage-rule-68-ra-no-8791-sec-47"
+            },
+            {
+              "letter": "H",
+              "title": "Partition – Rule 69",
+              "slug": "partition-rule-69"
+            },
+            {
+              "letter": "I",
+              "title": "Forcible Entry and Unlawful Detainer – Rule 70",
+              "slug": "forcible-entry-and-unlawful-detainer-rule-70"
+            },
+            {
+              "letter": "J",
+              "title": "Contempt – Rule 71",
+              "slug": "contempt-rule-71"
+            }
+          ]
+        },
+        {
+          "roman": "VI",
+          "title": "SPECIAL PROCEEDINGS AND WRITS",
+          "slug": "special-proceedings-and-writs",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Settlement of Estate of Deceased Persons",
+              "slug": "settlement-of-estate-of-deceased-persons"
+            },
+            {
+              "letter": "B",
+              "title": "Guardianship – Rules 92-97",
+              "slug": "guardianship-rules-92-97"
+            },
+            {
+              "letter": "C",
+              "title": "Habeas Corpus – Rule 102",
+              "slug": "habeas-corpus-rule-102"
+            },
+            {
+              "letter": "D",
+              "title": "Habeas Corpus in Relation to Custody of Minors – A.M. No. 03-04-04-SC",
+              "slug": "habeas-corpus-in-relation-to-custody-of-minors-am-no-03-04-04-sc"
+            },
+            {
+              "letter": "E",
+              "title": "Amparo – A.M. No. 07-9-12-SC",
+              "slug": "amparo-am-no-07-9-12-sc"
+            },
+            {
+              "letter": "F",
+              "title": "Habeas Data – A.M. No. 08-1-16-SC",
+              "slug": "habeas-data-am-no-08-1-16-sc"
+            },
+            {
+              "letter": "G",
+              "title": "Change of Name – Rule 103",
+              "slug": "change-of-name-rule-103"
+            },
+            {
+              "letter": "H",
+              "title": "Cancellation or Correction of Entries in the Civil Registry – Rule 108",
+              "slug": "cancellation-or-correction-of-entries-in-the-civil-registry-rule-108"
+            },
+            {
+              "letter": "I",
+              "title": "Clerical Error Act and its Implementing Rules – R.A. No. 9048, as amended",
+              "slug": "clerical-error-act-and-its-implementing-rules-ra-no-9048-as-amended"
+            },
+            {
+              "letter": "J",
+              "title": "Environmental Cases – A.M. No. 09-6-8-SC",
+              "slug": "environmental-cases-am-no-09-6-8-sc"
+            }
+          ]
+        },
+        {
+          "roman": "VII",
+          "title": "CRIMINAL PROCEDURE",
+          "slug": "criminal-procedure",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Criminal Jurisdiction",
+              "slug": "criminal-jurisdiction"
+            },
+            {
+              "letter": "B",
+              "title": "Prosecution of Offenses – Rule 110",
+              "slug": "prosecution-of-offenses-rule-110"
+            },
+            {
+              "letter": "C",
+              "title": "Prosecution of Civil Action – Rule 111",
+              "slug": "prosecution-of-civil-action-rule-111"
+            },
+            {
+              "letter": "D",
+              "title": "Preliminary Investigation – Rule 112",
+              "slug": "preliminary-investigation-rule-112"
+            },
+            {
+              "letter": "E",
+              "title": "Arrest – Rule 113",
+              "slug": "arrest-rule-113"
+            },
+            {
+              "letter": "F",
+              "title": "Bail – Rule 114",
+              "slug": "bail-rule-114"
+            },
+            {
+              "letter": "G",
+              "title": "Rights of Accused – Rule 115",
+              "slug": "rights-of-accused-rule-115"
+            },
+            {
+              "letter": "H",
+              "title": "Arraignment and Plea – Rule 116",
+              "slug": "arraignment-and-plea-rule-116"
+            },
+            {
+              "letter": "I",
+              "title": "Motion to Quash – Rule 117",
+              "slug": "motion-to-quash-rule-117"
+            },
+            {
+              "letter": "J",
+              "title": "Pre-trial – Rule 118",
+              "slug": "pre-trial-rule-118"
+            },
+            {
+              "letter": "K",
+              "title": "Trial – Rule 119",
+              "slug": "trial-rule-119"
+            },
+            {
+              "letter": "L",
+              "title": "Demurrer to Evidence",
+              "slug": "demurrer-to-evidence"
+            },
+            {
+              "letter": "M",
+              "title": "Judgment – Rule 120",
+              "slug": "judgment-rule-120"
+            },
+            {
+              "letter": "N",
+              "title": "New Trial or Reconsideration – Rule 121",
+              "slug": "new-trial-or-reconsideration-rule-121"
+            },
+            {
+              "letter": "O",
+              "title": "Appeal – Rule 122",
+              "slug": "appeal-rule-122"
+            },
+            {
+              "letter": "P",
+              "title": "Search and Seizure – Rule 126",
+              "slug": "search-and-seizure-rule-126"
+            },
+            {
+              "letter": "Q",
+              "title": "Provisional Remedies in Criminal Cases – Rule 127",
+              "slug": "provisional-remedies-in-criminal-cases-rule-127"
+            }
+          ]
+        },
+        {
+          "roman": "VIII",
+          "title": "EVIDENCE",
+          "slug": "evidence",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "General Provisions and Principles – Rule 128",
+              "slug": "general-provisions-and-principles-rule-128"
+            },
+            {
+              "letter": "B",
+              "title": "Liberal Construction of the Rules on Evidence",
+              "slug": "liberal-construction-of-the-rules-on-evidence"
+            },
+            {
+              "letter": "C",
+              "title": "Judicial Notice – Rule 129, Secs. 1-3",
+              "slug": "judicial-notice-rule-129-secs-1-3"
+            },
+            {
+              "letter": "D",
+              "title": "Judicial Admissions – Rule 129, Sec. 4",
+              "slug": "judicial-admissions-rule-129-sec-4"
+            },
+            {
+              "letter": "E",
+              "title": "Admissibility",
+              "slug": "admissibility"
+            },
+            {
+              "letter": "F",
+              "title": "Weight and Sufficiency – Rule 133",
+              "slug": "weight-and-sufficiency-rule-133"
+            },
+            {
+              "letter": "G",
+              "title": "Kinds",
+              "slug": "kinds"
+            },
+            {
+              "letter": "H",
+              "title": "Presentation of Evidence – Rule 132",
+              "slug": "presentation-of-evidence-rule-132"
+            },
+            {
+              "letter": "I",
+              "title": "Burden of Proof and Burden of Evidence – Rule 131, Sec. 1",
+              "slug": "burden-of-proof-and-burden-of-evidence-rule-131-sec-1"
+            },
+            {
+              "letter": "J",
+              "title": "Presumptions",
+              "slug": "presumptions"
+            },
+            {
+              "letter": "K",
+              "title": "Rules on the Transmission and Execution of Letters of Request for Taking",
+              "slug": "rules-on-the-transmission-and-execution-of-letters-of-request-for-taking"
+            }
+          ]
+        },
+        {
+          "roman": "IX",
+          "title": "LEGAL AND JUDICIAL ETHICS",
+          "slug": "legal-and-judicial-ethics",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Legal Ethics – Code of Professional Responsibility and Accountability",
+              "slug": "legal-ethics-code-of-professional-responsibility-and-accountability"
+            },
+            {
+              "letter": "B",
+              "title": "Judicial Ethics",
+              "slug": "judicial-ethics"
+            }
+          ]
+        },
+        {
+          "roman": "X",
+          "title": "PRACTICAL EXERCISES",
+          "slug": "practical-exercises",
+          "subtopics": [
+            {
+              "letter": "A",
+              "title": "Promissory Note or Simple Loan Agreement",
+              "slug": "promissory-note-or-simple-loan-agreement"
+            },
+            {
+              "letter": "B",
+              "title": "Demand and Authorization Letters",
+              "slug": "demand-and-authorization-letters"
+            },
+            {
+              "letter": "C",
+              "title": "Sale Contract",
+              "slug": "sale-contract"
+            },
+            {
+              "letter": "D",
+              "title": "Lease Contract",
+              "slug": "lease-contract"
+            },
+            {
+              "letter": "E",
+              "title": "Special Power of Attorney",
+              "slug": "special-power-of-attorney"
+            },
+            {
+              "letter": "F",
+              "title": "Verification and Certification Against Forum Shopping",
+              "slug": "verification-and-certification-against-forum-shopping"
+            },
+            {
+              "letter": "G",
+              "title": "Extra-judicial Settlement of Estate",
+              "slug": "extra-judicial-settlement-of-estate"
+            },
+            {
+              "letter": "H",
+              "title": "Judicial Affidavit",
+              "slug": "judicial-affidavit"
+            },
+            {
+              "letter": "I",
+              "title": "Notarial Acts",
+              "slug": "notarial-acts"
+            },
+            {
+              "letter": "J",
+              "title": "Motions",
+              "slug": "motions"
+            },
+            {
+              "letter": "K",
+              "title": "Quitclaim in Labor Cases",
+              "slug": "quitclaim-in-labor-cases"
+            },
+            {
+              "letter": "L",
+              "title": "Information",
+              "slug": "information"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
