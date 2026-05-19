@@ -1,5 +1,4 @@
-import fs from "fs"
-import path from "path"
+import syllabus from "../data/syllabus-2026.json"
 
 export type Topic = {
   title: string
@@ -57,13 +56,7 @@ const subjectMetadata: Record<string, { title: string; description: string; imag
 
 // 2. Read and parse the syllabus dynamically
 function loadSyllabusData(): Record<string, SubjectData> {
-  // If we are in the browser (e.g. Next.js tries to bundle this for client), return empty or mock
-  // However, this file should only be used in Server Components.
   try {
-    const filePath = path.join(process.cwd(), "data", "syllabus-2026.json")
-    const fileContents = fs.readFileSync(filePath, "utf8")
-    const syllabus = JSON.parse(fileContents)
-
     const data: Record<string, SubjectData> = {}
 
     for (const subject of syllabus.subjects) {
@@ -93,7 +86,7 @@ function loadSyllabusData(): Record<string, SubjectData> {
     
     return data
   } catch {
-    console.warn("Failed to load syllabus-2026.json dynamically. Falling back to empty object.")
+    console.warn("Failed to load syllabus-2026.json. Falling back to empty object.")
     return {}
   }
 }
