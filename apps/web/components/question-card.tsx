@@ -15,6 +15,46 @@ interface QuestionCardProps {
   chair: string
 }
 
+const formatPdfText = (text: string): string => {
+  if (!text) return ""
+  
+  // Split into paragraph blocks by double newlines (or more)
+  const blocks = text.split(/\n\s*\n/)
+  
+  const cleanBlocks = blocks.map(block => {
+    const lines = block.split('\n')
+    let result = ""
+    
+    for (let i = 0; i < lines.length; i++) {
+      const lineVal = lines[i]
+      const currentLine = lineVal ? lineVal.trim() : ""
+      if (!currentLine) continue
+      
+      if (result === "") {
+        result = currentLine
+      } else {
+        // If the current line starts with a list marker (e.g. "1.", "(a)", "-", "*")
+        const isListMarker = /^\s*(\d+\.|\([a-z0-9]+\)|[-*•])\s+/i.test(currentLine)
+        
+        // If the previous line ended with a colon
+        const prevLineVal = lines[i - 1]
+        const previousLine = prevLineVal ? prevLineVal.trim() : ""
+        const endsWithColon = previousLine.endsWith(':')
+        
+        if (isListMarker || endsWithColon) {
+          result += "\n" + currentLine
+        } else {
+          // Merge with a single space
+          result += (result.endsWith(" ") ? "" : " ") + currentLine
+        }
+      }
+    }
+    return result
+  })
+  
+  return cleanBlocks.join("\n\n")
+}
+
 const parseAnswer = (ans: string) => {
   const suggestedPrefix = "SUGGESTED ANSWER:"
   const alternativePrefix = "Alternative Answer:"
@@ -76,6 +116,7 @@ export function QuestionCard({
                   {suggestedAnswers && suggestedAnswers.length > 0 ? (
                     suggestedAnswers.map((ans, idx) => {
                       const { type, text } = parseAnswer(ans)
+                      const cleanText = formatPdfText(text)
                       return (
                         <div 
                           key={idx} 
@@ -109,7 +150,7 @@ export function QuestionCard({
                             )}
                           </div>
                           <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
-                            {text}
+                            {cleanText}
                           </p>
                         </div>
                       )
@@ -122,7 +163,7 @@ export function QuestionCard({
                 </div>
               ) : (
                 <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
-                  {questionText}
+                  {formatPdfText(questionText)}
                 </p>
               )}
             </CardContent>
