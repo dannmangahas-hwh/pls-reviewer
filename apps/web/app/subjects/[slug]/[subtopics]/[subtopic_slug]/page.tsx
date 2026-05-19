@@ -122,7 +122,7 @@ export default async function QuestionsPage(props: {
                   year={q.year.toString()}
                   examType="BAR EXAM"
                   questionText={q.question_text}
-                  answerText={q.suggested_answers?.[0] || "No suggested answer available."}
+                  suggestedAnswers={q.suggested_answers || []}
                   chair="SUPREME COURT"
                 />
               ))

@@ -5,20 +5,39 @@ import { Award, CheckCircle2 } from "lucide-react"
 import { cn } from "@workspace/ui/lib/utils"
 import { Button } from "@workspace/ui/components/button"
 import { Card, CardContent, CardFooter } from "@workspace/ui/components/card"
+import { Badge } from "@workspace/ui/components/badge"
 
 interface QuestionCardProps {
   year: string
   examType: string
   questionText: string
-  answerText: string
+  suggestedAnswers: string[]
   chair: string
+}
+
+const parseAnswer = (ans: string) => {
+  const suggestedPrefix = "SUGGESTED ANSWER:"
+  const alternativePrefix = "Alternative Answer:"
+  
+  let type: "suggested" | "alternative" | "default" = "default"
+  let cleanText = ans.trim()
+  
+  if (cleanText.toLowerCase().startsWith(suggestedPrefix.toLowerCase())) {
+    type = "suggested"
+    cleanText = cleanText.substring(suggestedPrefix.length).trim()
+  } else if (cleanText.toLowerCase().startsWith(alternativePrefix.toLowerCase())) {
+    type = "alternative"
+    cleanText = cleanText.substring(alternativePrefix.length).trim()
+  }
+  
+  return { type, text: cleanText }
 }
 
 export function QuestionCard({
   year,
   examType,
   questionText,
-  answerText,
+  suggestedAnswers = [],
   chair,
 }: QuestionCardProps) {
   const [isShowingAnswer, setIsShowingAnswer] = useState(false)
@@ -53,14 +72,56 @@ export function QuestionCard({
           <Card className="block relative z-10 rounded-none border border-gray-300 bg-white p-6 shadow-none md:p-8 ring-0 overflow-visible gap-0">
             <CardContent className="p-0">
               {isShowingAnswer ? (
-                <p className="text-base font-light leading-relaxed text-navy md:text-[17px]">
-                  <strong className="mr-2 font-bold tracking-wide text-gold uppercase">
-                    ANSWER:
-                  </strong>
-                  {answerText}
-                </p>
+                <div className="flex flex-col gap-6">
+                  {suggestedAnswers && suggestedAnswers.length > 0 ? (
+                    suggestedAnswers.map((ans, idx) => {
+                      const { type, text } = parseAnswer(ans)
+                      return (
+                        <div 
+                          key={idx} 
+                          className={cn(
+                            "flex flex-col gap-3 rounded-none border p-5 transition-all duration-300",
+                            type === "suggested" 
+                              ? "bg-amber-50/40 border-amber-200/50 dark:bg-amber-950/5 dark:border-amber-900/20" 
+                              : type === "alternative"
+                              ? "bg-slate-50/40 border-slate-200/50 dark:bg-slate-900/5 dark:border-slate-800/20"
+                              : "bg-gray-50/40 border-gray-200/50 dark:bg-gray-900/5 dark:border-gray-800/20"
+                          )}
+                        >
+                          <div className="flex items-center justify-between">
+                            <Badge
+                              variant="outline"
+                              className={cn(
+                                "rounded-full px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider",
+                                type === "suggested"
+                                  ? "border-amber-500/30 bg-amber-100/70 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
+                                  : type === "alternative"
+                                  ? "border-slate-500/30 bg-slate-100/70 text-slate-800 dark:bg-slate-900/30 dark:text-slate-300"
+                                  : "border-gray-500/30 bg-gray-100/70 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
+                              )}
+                            >
+                              {type === "suggested" ? "Suggested Answer" : type === "alternative" ? "Alternative Answer" : "Answer"}
+                            </Badge>
+                            {suggestedAnswers.length > 1 && (
+                              <span className="text-[11px] font-bold text-muted-foreground/60 uppercase tracking-widest">
+                                PART {idx + 1}
+                              </span>
+                            )}
+                          </div>
+                          <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
+                            {text}
+                          </p>
+                        </div>
+                      )
+                    })
+                  ) : (
+                    <p className="text-base font-light leading-relaxed text-muted-foreground italic">
+                      No suggested answer available.
+                    </p>
+                  )}
+                </div>
               ) : (
-                <p className="text-base font-light leading-relaxed text-navy md:text-[17px]">
+                <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
                   {questionText}
                 </p>
               )}
