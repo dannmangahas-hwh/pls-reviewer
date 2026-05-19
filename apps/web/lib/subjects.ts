@@ -92,7 +92,7 @@ function loadSyllabusData(): Record<string, SubjectData> {
     }
     
     return data
-  } catch (error) {
+  } catch {
     console.warn("Failed to load syllabus-2026.json dynamically. Falling back to empty object.")
     return {}
   }
