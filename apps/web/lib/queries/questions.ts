@@ -59,3 +59,28 @@ export async function getTopicQuestionCounts(subjectSlug: string) {
     count: item.count
   }))
 }
+
+/**
+ * Aggregates question counts grouped by subtopic for a specific topic.
+ * Useful for displaying the number of questions available in the UI subtopics list.
+ */
+export async function getSubtopicQuestionCounts(topicSlug: string) {
+  await connectToDatabase()
+  
+  const result = await Question.aggregate([
+    { $match: { syllabus_topic_slug: topicSlug } },
+    { 
+      $group: { 
+        _id: "$syllabus_subtopic_slug", 
+        count: { $sum: 1 },
+      } 
+    }
+  ])
+  
+  return result.reduce((acc, item) => {
+    if (item._id) {
+      acc[item._id] = item.count;
+    }
+    return acc;
+  }, {} as Record<string, number>);
+}
