@@ -10,6 +10,17 @@ import { QuestionCard } from "@/components/question-card"
 import headerBg from "@/public/Category.png"
 import justiceBg from "@/public/Category.png" // Mocking the lady justice background with existing bg
 
+const CHAIRPERSONS: Record<number | string, string> = {
+  2019: "Justice Estela M. Perlas-Bernabe",
+  2020: "Justice Marvic M.V.F. Leonen",
+  2021: "Justice Marvic M.V.F. Leonen",
+  2022: "Justice Alfredo Benjamin S. Caguioa",
+  2023: "Justice Ramon Paul L. Hernando",
+  2024: "Justice Mario V. Lopez",
+  2025: "Justice Amy C. Lazaro-Javier",
+  2026: "Justice Samuel H. Gaerlan",
+}
+
 export default async function QuestionsPage(props: {
   params: Promise<{ slug: string; subtopics: string; subtopic_slug: string }>
 }) {
@@ -123,7 +134,7 @@ export default async function QuestionsPage(props: {
                   examType="BAR EXAM"
                   questionText={q.question_text}
                   suggestedAnswers={q.suggested_answers || []}
-                  chair="SUPREME COURT"
+                  chair={CHAIRPERSONS[q.year] || "SUPREME COURT"}
                 />
               ))
             ) : (
