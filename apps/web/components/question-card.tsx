@@ -58,8 +58,9 @@ const formatPdfText = (text: string): string => {
 const parseAnswer = (ans: string) => {
   const suggestedPrefix = "SUGGESTED ANSWER:"
   const alternativePrefix = "Alternative Answer:"
+  const connectedPrefix = "CONNECTED QUESTION:"
   
-  let type: "suggested" | "alternative" | "default" = "default"
+  let type: "suggested" | "alternative" | "connected-question" | "default" = "default"
   let cleanText = ans.trim()
   
   if (cleanText.toLowerCase().startsWith(suggestedPrefix.toLowerCase())) {
@@ -68,6 +69,9 @@ const parseAnswer = (ans: string) => {
   } else if (cleanText.toLowerCase().startsWith(alternativePrefix.toLowerCase())) {
     type = "alternative"
     cleanText = cleanText.substring(alternativePrefix.length).trim()
+  } else if (cleanText.toLowerCase().startsWith(connectedPrefix.toLowerCase())) {
+    type = "connected-question"
+    cleanText = cleanText.substring(connectedPrefix.length).trim()
   }
   
   return { type, text: cleanText }
@@ -112,7 +116,11 @@ export function QuestionCard({
           <Card className="block relative z-10 rounded-none border border-gray-300 bg-white p-6 shadow-none md:p-8 ring-0 overflow-visible gap-0">
             <CardContent className="p-0">
               {isShowingAnswer ? (
-                <div className="flex flex-col gap-6">
+                <div className={cn("flex flex-col gap-6", suggestedAnswers.length > 1 ? "relative pl-8" : "")}>
+                  {/* Vertical dotted/dashed timeline line */}
+                  {suggestedAnswers.length > 1 && (
+                    <div className="absolute left-3 top-6 bottom-6 w-0.5 border-l-2 border-dashed border-slate-300 z-0" />
+                  )}
                   {suggestedAnswers && suggestedAnswers.length > 0 ? (
                     suggestedAnswers.map((ans, idx) => {
                       const { type, text } = parseAnswer(ans)
@@ -120,38 +128,65 @@ export function QuestionCard({
                       return (
                         <div 
                           key={idx} 
-                          className={cn(
-                            "flex flex-col gap-3 rounded-none border p-5 transition-all duration-300",
-                            type === "suggested" 
-                              ? "bg-amber-50/40 border-amber-200/50 dark:bg-amber-950/5 dark:border-amber-900/20" 
-                              : type === "alternative"
-                              ? "bg-slate-50/40 border-slate-200/50 dark:bg-slate-900/5 dark:border-slate-800/20"
-                              : "bg-gray-50/40 border-gray-200/50 dark:bg-gray-900/5 dark:border-gray-800/20"
-                          )}
+                          className="relative"
                         >
-                          <div className="flex items-center justify-between">
-                            <Badge
-                              variant="outline"
+                          {/* Timeline node dot */}
+                          {suggestedAnswers.length > 1 && (
+                            <div 
                               className={cn(
-                                "rounded-full px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider",
-                                type === "suggested"
-                                  ? "border-amber-500/30 bg-amber-100/70 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
-                                  : type === "alternative"
-                                  ? "border-slate-500/30 bg-slate-100/70 text-slate-800 dark:bg-slate-900/30 dark:text-slate-300"
-                                  : "border-gray-500/30 bg-gray-100/70 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
+                                "absolute -left-[25px] top-[26px] z-10 size-3 rounded-full border-2 bg-white",
+                                type === "connected-question"
+                                  ? "border-indigo-500 bg-indigo-50"
+                                  : type === "suggested"
+                                  ? "border-amber-500 bg-amber-50"
+                                  : "border-slate-400 bg-slate-50"
                               )}
-                            >
-                              {type === "suggested" ? "Suggested Answer" : type === "alternative" ? "Alternative Answer" : "Answer"}
-                            </Badge>
-                            {suggestedAnswers.length > 1 && (
-                              <span className="text-[11px] font-bold text-muted-foreground/60 uppercase tracking-widest">
-                                PART {idx + 1}
-                              </span>
+                            />
+                          )}
+                          <div 
+                            className={cn(
+                              "flex flex-col gap-3 rounded-none border p-5 transition-all duration-300",
+                              type === "suggested" 
+                                ? "bg-amber-50/40 border-amber-200/50 dark:bg-amber-950/5 dark:border-amber-900/20" 
+                                : type === "alternative"
+                                ? "bg-slate-50/40 border-slate-200/50 dark:bg-slate-900/5 dark:border-slate-800/20"
+                                : type === "connected-question"
+                                ? "bg-indigo-50/15 border-indigo-200/50 dark:bg-indigo-950/5 dark:border-indigo-900/20"
+                                : "bg-gray-50/40 border-gray-200/50 dark:bg-gray-900/5 dark:border-gray-800/20"
                             )}
+                          >
+                            <div className="flex items-center justify-between">
+                              <Badge
+                                variant="outline"
+                                className={cn(
+                                  "rounded-full px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider",
+                                  type === "suggested"
+                                    ? "border-amber-500/30 bg-amber-100/70 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
+                                    : type === "alternative"
+                                    ? "border-slate-500/30 bg-slate-100/70 text-slate-800 dark:bg-slate-900/30 dark:text-slate-300"
+                                    : type === "connected-question"
+                                    ? "border-indigo-500/30 bg-indigo-100/70 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300"
+                                    : "border-gray-500/30 bg-gray-100/70 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
+                                )}
+                              >
+                                {type === "suggested" 
+                                  ? "Suggested Answer" 
+                                  : type === "alternative" 
+                                  ? "Alternative Answer" 
+                                  : type === "connected-question"
+                                  ? "Connected Question"
+                                  : "Answer"}
+                              </Badge>
+                              {suggestedAnswers.length > 1 && (
+                                <span className="text-[11px] font-bold text-muted-foreground/60 uppercase tracking-widest">
+                                  PART {idx + 1}
+                                </span>
+                              )}
+                            </div>
+                            <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
+                              {cleanText}
+                            </p>
                           </div>
-                          <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
-                            {cleanText}
-                          </p>
                         </div>
                       )
                     })
