@@ -47,7 +47,11 @@ export default async function QuestionsPage(props: {
   if (!subtopic) notFound()
   
   // Fetch real questions from MongoDB!
-  const questions = await getQuestionsBySubtopic(subtopic.slug || subtopicSlug)
+  const questions = await getQuestionsBySubtopic(
+    subtopic.slug || subtopicSlug,
+    topic.slug || topicSlug,
+    slug
+  )
 
   return (
     <div className="flex min-h-screen flex-col">

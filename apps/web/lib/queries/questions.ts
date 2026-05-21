@@ -29,9 +29,20 @@ export async function getQuestionsByTopic(topicSlug: string): Promise<IQuestion[
 /**
  * Fetch all questions for a specific syllabus subtopic (e.g., 'marriage').
  */
-export async function getQuestionsBySubtopic(subtopicSlug: string): Promise<IQuestion[]> {
+export async function getQuestionsBySubtopic(
+  subtopicSlug: string,
+  topicSlug?: string,
+  subjectSlug?: string
+): Promise<IQuestion[]> {
   await connectToDatabase()
-  return Question.find({ syllabus_subtopic_slug: subtopicSlug }).lean()
+  const filter: any = { syllabus_subtopic_slug: subtopicSlug }
+  if (topicSlug) {
+    filter.syllabus_topic_slug = topicSlug
+  }
+  if (subjectSlug) {
+    filter.subject_slug = subjectSlug
+  }
+  return Question.find(filter).lean()
 }
 
 /**
@@ -64,11 +75,16 @@ export async function getTopicQuestionCounts(subjectSlug: string) {
  * Aggregates question counts grouped by subtopic for a specific topic.
  * Useful for displaying the number of questions available in the UI subtopics list.
  */
-export async function getSubtopicQuestionCounts(topicSlug: string) {
+export async function getSubtopicQuestionCounts(topicSlug: string, subjectSlug?: string) {
   await connectToDatabase()
   
+  const match: any = { syllabus_topic_slug: topicSlug }
+  if (subjectSlug) {
+    match.subject_slug = subjectSlug
+  }
+  
   const result = await Question.aggregate([
-    { $match: { syllabus_topic_slug: topicSlug } },
+    { $match: match },
     { 
       $group: { 
         _id: "$syllabus_subtopic_slug", 

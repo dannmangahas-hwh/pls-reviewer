@@ -33,7 +33,7 @@ export default async function SubtopicsPage(props: {
 
   if (!topic) notFound()
 
-  const subtopicCounts = await getSubtopicQuestionCounts(topic.slug || topicSlug)
+  const subtopicCounts = await getSubtopicQuestionCounts(topic.slug || topicSlug, slug)
 
   return (
     <div className="flex min-h-screen flex-col">
