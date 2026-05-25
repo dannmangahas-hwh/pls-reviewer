@@ -276,7 +276,20 @@ const cleanSpacingAnomalies = (text: string): string => {
   // 5. Collapse multiple spaces into a single space (except newlines)
   result = result.replace(/[^\S\n]+/g, " ")
 
-  return result
+  // 6. Dynamic Trailing Text Cleanups (Page numbers, separators, END OF PART, Panel of Experts list)
+  // Strip ANNEX PANEL OF EXPERTS list (and anything following it) at the very end
+  result = result.replace(/\n+\s*(?:\d+\s+\n+)?(?:ANNEX\s+\n+)?PANEL\s+OF\s+EXPERTS[\s\S]*$/gi, "")
+  
+  // Strip END OF PART X lines
+  result = result.replace(/\n+\s*END\s+OF\s+PART\s+[0-9IIVX]+\.?,?\s*$/gi, "")
+  
+  // Strip trailing separators (like –  –, – –, - -)
+  result = result.replace(/\n+\s*[-–—\s]+\s*$/g, "")
+  
+  // Strip trailing standalone page numbers
+  result = result.replace(/\n+\s*\d+\s*$/g, "")
+
+  return result.trim()
 }
 
 const formatPdfText = (text: string): string => {
