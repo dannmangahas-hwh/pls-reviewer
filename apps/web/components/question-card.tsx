@@ -15,11 +15,168 @@ interface QuestionCardProps {
   chair: string
 }
 
+const cleanSpacingAnomalies = (text: string): string => {
+  if (!text) return ""
+  
+  let result = text
+
+  // 1. Fix accidental double newlines that cut a sentence (followed by a lowercase letter that is not a list marker)
+  result = result.replace(/\n\s*\n(?=\s*[a-z](?![.)]))/g, "\n")
+
+  // 2. Fix disjointed small common words (e.g. "t he" -> "the", "i t" -> "it")
+  const disjointMap: [RegExp, string][] = [
+    [/\bt\s+he\b/gi, "the"],
+    [/\bth\s+e\b/gi, "the"],
+    [/\bi\s+t\b/gi, "it"],
+    [/\bo\s+f\b/gi, "of"],
+    [/\bt\s+o\b/gi, "to"],
+    [/\bi\s+n\b/gi, "in"],
+    [/\bo\s+n\b/gi, "on"],
+    [/\ba\s+s\b/gi, "as"],
+    [/\bb\s+y\b/gi, "by"],
+    [/\bo\s+r\b/gi, "or"],
+    [/\ba\s+t\b/gi, "at"],
+    [/\ba\s+n\b/gi, "an"],
+    [/\bb\s+e\b/gi, "be"],
+    [/\bw\s+ho\b/gi, "who"],
+    [/\bt\s+heir\b/gi, "their"],
+    [/\bt\s+hey\b/gi, "they"],
+    [/\bt\s+hem\b/gi, "them"],
+    [/\bt\s+herefore\b/gi, "therefore"],
+    [/\bt\s+here\b/gi, "there"],
+    [/\bu\s+pon\b/gi, "upon"],
+    [/\bw\s+ith\b/gi, "with"],
+    [/\bw\s+ithin\b/gi, "within"],
+    [/\bh\s+ave\b/gi, "have"],
+    [/\bh\s+as\b/gi, "has"],
+    [/\bh\s+is\b/gi, "his"],
+    [/\bh\s+er\b/gi, "her"],
+    [/\ba\s+nd\b/gi, "and"],
+    [/\ba\s+ny\b/gi, "any"],
+    [/\ba\s+re\b/gi, "are"],
+    [/\bo\s+ut\b/gi, "out"],
+    [/\bf\s+or\b/gi, "for"],
+    [/\bf\s+rom\b/gi, "from"],
+    [/\bb\s+ut\b/gi, "but"],
+    [/\bn\s+ot\b/gi, "not"],
+    [/\bs\s+uch\b/gi, "such"],
+    [/\bs\s+aid\b/gi, "said"],
+    [/\bs\s+ame\b/gi, "same"],
+    [/\bi\s+ts\b/gi, "its"],
+    [/\bt\s+his\b/gi, "this"],
+    [/\bth\s+is\b/gi, "this"],
+    [/\bth\s+at\b/gi, "that"],
+    [/\bt\s+hat\b/gi, "that"],
+    [/\bth\s+ese\b/gi, "these"],
+    [/\bth\s+ose\b/gi, "those"],
+    [/\ba\s+ll\b/gi, "all"],
+    [/\bmo\s+re\b/gi, "more"],
+    [/\bbe\s+fore\b/gi, "before"],
+    [/\bbef\s+ore\b/gi, "before"],
+    [/\baf\s+ter\b/gi, "after"],
+    [/\bwh\s+ere\b/gi, "where"],
+    [/\bwhe\s+n\b/gi, "when"],
+    [/\bwh\s+ich\b/gi, "which"],
+    [/\bth\s+ereof\b/gi, "thereof"],
+    [/\bthe\s+reof\b/gi, "thereof"],
+    [/\bt\s+hereof\b/gi, "thereof"],
+    [/\bth\s+ereby\b/gi, "thereby"],
+    [/\bthe\s+reby\b/gi, "thereby"],
+    [/\bsh\s+ould\b/gi, "should"],
+    [/\bwo\s+uld\b/gi, "would"],
+    [/\bc\s+ould\b/gi, "could"],
+    [/\bco\s+urt\b/gi, "court"],
+    [/\bcau\s+se\b/gi, "cause"],
+    [/\bcon\s+stitution\b/gi, "constitution"],
+    [/\bpro\s+vision\b/gi, "provision"],
+    [/\bju\s+risdiction\b/gi, "jurisdiction"],
+    [/\bcol\s+lection\b/gi, "collection"],
+    [/\bpos\s+ition\b/gi, "position"],
+    [/\bgov\s+ernment\b/gi, "government"],
+    [/\bap\s+pointive\b/gi, "appointive"],
+    [/\bap\s+pointment\b/gi, "appointment"],
+    [/\belec\s+tive\b/gi, "elective"],
+    [/\belec\s+tion\b/gi, "election"],
+    [/\bo\s+ffice\b/gi, "office"],
+    [/\bof\s+fice\b/gi, "office"],
+    [/\bo\s+fficial\b/gi, "official"],
+    [/\boff\s+icial\b/gi, "official"],
+    [/\bcan\s+didacy\b/gi, "candidacy"],
+    [/\bcandi\s+dacy\b/gi, "candidacy"],
+    [/\bre\s+signed\b/gi, "resigned"],
+    [/\bresig\s+ned\b/gi, "resigned"],
+    [/\bde\s+cided\b/gi, "decided"],
+    [/\bex\s+ercising\b/gi, "exercising"],
+    [/\bdut\s+ies\b/gi, "duties"],
+    [/\bcon\s+gressman\b/gi, "congressman"],
+    [/\bcon\s+gress\b/gi, "congress"],
+    [/\bse\s+nate\b/gi, "senate"],
+    [/\bho\s+use\b/gi, "house"],
+    [/\brepre\s+sentatives\b/gi, "representatives"],
+    [/\bpre\s+sident\b/gi, "president"],
+    [/\bcom\s+mittee\b/gi, "committee"],
+    [/\bcl\s+aim\b/gi, "claim"],
+    [/\bcla\s+im\b/gi, "claim"],
+    [/\bde\s+fense\b/gi, "defense"],
+    [/\bna\s+tional\b/gi, "national"],
+    [/\bunders\s+ecretary\b/gi, "undersecretary"],
+    [/\bdi\s+smissed\b/gi, "dismissed"],
+    [/\bvio\s+lation\b/gi, "violation"],
+    [/\bpe\s+riod\b/gi, "period"],
+    [/\bpro\s+ceeding\b/gi, "proceeding"],
+    [/\bpro\s+ceedings\b/gi, "proceedings"],
+    [/\bini\s+tiated\b/gi, "initiated"],
+    [/\binit\s+iated\b/gi, "initiated"],
+    [/\bver\s+ified\b/gi, "verified"],
+    [/\bcom\s+plaint\b/gi, "complaint"],
+    [/\bfil\s+ing\b/gi, "filing"],
+    [/\bre\s+ferral\b/gi, "referral"],
+    [/\bre\s+ferred\b/gi, "referred"],
+    [/\bsup\s+reme\b/gi, "supreme"],
+    [/\bju\s+stices\b/gi, "justices"],
+    [/\bju\s+stice\b/gi, "justice"],
+    [/\bmem\s+ber\b/gi, "member"],
+    [/\bci\s+tizen\b/gi, "citizen"],
+    [/\bre\s+solution\b/gi, "resolution"],
+    [/\ben\s+dorsement\b/gi, "endorsement"],
+    [/\bendors\s+ed\b/gi, "endorsed"],
+    [/\bcomp\s+laints\b/gi, "complaints"],
+    [/\bfrus\s+trate\b/gi, "frustrate"],
+    [/\bsu\s+fficient\b/gi, "sufficient"],
+    [/\bpr\s+ior\b/gi, "prior"],
+  ]
+  disjointMap.forEach(([pat, rep]) => {
+    result = result.replace(pat, rep)
+  })
+
+  // 3. Fix spaces around hyphens in words (e.g. "non -payment" or "Du -guil")
+  result = result.replace(/\b(\w+)\s+-\s*(\w+)\b/g, "$1-$2")
+  result = result.replace(/\b(\w+)\s*-\s+(\w+)\b/g, "$1-$2")
+
+  // 4. Fix spaces before punctuation (comma, semicolon, colon, period, question mark, exclamation mark)
+  result = result.replace(/\s+([,;:!?])/g, "$1")
+  
+  // Specific fix for "v ." -> "v."
+  result = result.replace(/\bv\s+\.\b/gi, "v.")
+  result = result.replace(/\bv\s+\./gi, "v.")
+  
+  // Fix space before period, excluding ellipsis
+  result = result.replace(/\s+\.(?!\.)/g, ".")
+
+  // 5. Collapse multiple spaces into a single space (except newlines)
+  result = result.replace(/[^\S\n]+/g, " ")
+
+  return result
+}
+
 const formatPdfText = (text: string): string => {
   if (!text) return ""
   
+  // Clean spacing anomalies before doing line-by-line formatting
+  const cleanedText = cleanSpacingAnomalies(text)
+  
   // Split into paragraph blocks by double newlines (or more)
-  const blocks = text.split(/\n\s*\n/)
+  const blocks = cleanedText.split(/\n\s*\n/)
   
   const cleanBlocks = blocks.map(block => {
     const lines = block.split('\n')
@@ -34,7 +191,8 @@ const formatPdfText = (text: string): string => {
         result = currentLine
       } else {
         // If the current line starts with a list marker (e.g. "1.", "(a)", "-", "*")
-        const isListMarker = /^\s*(\d+\.|\([a-z0-9]+\)|[-*•])\s+/i.test(currentLine)
+        // Refined regex to avoid breaking inline parenthesized numbers like (15)
+        const isListMarker = /^\s*(\d+\.|\([a-z0-9]\)|\([ivx]+\)|[-*•])\s+/i.test(currentLine)
         
         // If the previous line ended with a colon
         const prevLineVal = lines[i - 1]
