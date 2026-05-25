@@ -73,7 +73,7 @@ export default async function SubjectDetailPage(props: {
           <div className="flex flex-col gap-6">
             {data.topics.length > 0 ? (
               data.topics.map((topic, index) => {
-                const topicSlug = topic.title.toLowerCase().replace(/\s+/g, "-")
+                const topicSlug = topic.slug || topic.title.toLowerCase().replace(/\s+/g, "-")
                 return (
                   <Link
                     key={index}
