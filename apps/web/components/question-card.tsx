@@ -56,25 +56,57 @@ const formatPdfText = (text: string): string => {
 }
 
 const parseAnswer = (ans: string) => {
-  const suggestedPrefix = "SUGGESTED ANSWER:"
-  const alternativePrefix = "Alternative Answer:"
-  const connectedPrefix = "CONNECTED QUESTION:"
-  
   let type: "suggested" | "alternative" | "connected-question" | "default" = "default"
+  let label = "Answer"
   let cleanText = ans.trim()
   
-  if (cleanText.toLowerCase().startsWith(suggestedPrefix.toLowerCase())) {
-    type = "suggested"
-    cleanText = cleanText.substring(suggestedPrefix.length).trim()
-  } else if (cleanText.toLowerCase().startsWith(alternativePrefix.toLowerCase())) {
-    type = "alternative"
-    cleanText = cleanText.substring(alternativePrefix.length).trim()
-  } else if (cleanText.toLowerCase().startsWith(connectedPrefix.toLowerCase())) {
+  // 1. Connected Question
+  const connectedMatch = cleanText.match(/^connected\s+question\s*:?/i)
+  if (connectedMatch) {
     type = "connected-question"
-    cleanText = cleanText.substring(connectedPrefix.length).trim()
+    label = "Connected Question"
+    cleanText = cleanText.substring(connectedMatch[0].length).trim()
+    return { type, label, text: cleanText }
+  }
+
+  // 2. Alternative Answer (must match before suggested answer to handle "alternative suggested answer")
+  const alternativeMatch = cleanText.match(/^(alternative\s+suggested\s+answer|alternative\s+answers?)\s*:?/i)
+  if (alternativeMatch) {
+    type = "alternative"
+    const matchedStr = (alternativeMatch[1] ?? "").toLowerCase()
+    label = "Alternative Answer"
+    if (matchedStr.includes("suggested")) {
+      label = "Alternative Suggested Answer"
+    } else if (matchedStr.includes("answers")) {
+      label = "Alternative Answers"
+    }
+    cleanText = cleanText.substring(alternativeMatch[0].length).trim()
+    return { type, label, text: cleanText }
+  }
+
+  // 3. Suggested Answer
+  const suggestedMatch = cleanText.match(/^(primary\s+suggested\s+answer|secondary\s+suggested\s+answer|suggested\s+answers?\s+to\s+the|suggested\s+answers?\s+\d+|suggested\s+answers?)\s*:?/i)
+  if (suggestedMatch) {
+    type = "suggested"
+    const matchedStr = (suggestedMatch[1] ?? "").toLowerCase()
+    label = "Suggested Answer"
+    if (matchedStr.includes("primary")) {
+      label = "Primary Suggested Answer"
+    } else if (matchedStr.includes("secondary")) {
+      label = "Secondary Suggested Answer"
+    } else if (matchedStr.includes("answers")) {
+      label = "Suggested Answers"
+    } else {
+      const numMatch = matchedStr.match(/(\d+)/)
+      if (numMatch) {
+        label = `Suggested Answer ${numMatch[1]}`
+      }
+    }
+    cleanText = cleanText.substring(suggestedMatch[0].length).trim()
+    return { type, label, text: cleanText }
   }
   
-  return { type, text: cleanText }
+  return { type, label, text: cleanText }
 }
 
 export function QuestionCard({
@@ -126,7 +158,7 @@ export function QuestionCard({
                       )}
                       {validAnswers.length > 0 ? (
                         validAnswers.map((ans, idx) => {
-                          const { type, text } = parseAnswer(ans)
+                          const { type, label, text } = parseAnswer(ans)
                           const cleanText = formatPdfText(text)
                           return (
                             <div 
@@ -172,13 +204,7 @@ export function QuestionCard({
                                         : "border-gray-500/30 bg-gray-100/70 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
                                     )}
                                   >
-                                    {type === "suggested" 
-                                      ? "Suggested Answer" 
-                                      : type === "alternative" 
-                                      ? "Alternative Answer" 
-                                      : type === "connected-question"
-                                      ? "Connected Question"
-                                      : "Answer"}
+                                    {label}
                                   </Badge>
                                   {validAnswers.length > 1 && (
                                     <span className="text-[11px] font-bold text-muted-foreground/60 uppercase tracking-widest">
