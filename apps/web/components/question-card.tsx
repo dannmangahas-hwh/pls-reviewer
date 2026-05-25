@@ -417,7 +417,23 @@ export function QuestionCard({
             <CardContent className="p-0">
               {isShowingAnswer ? (
                 (() => {
-                  const validAnswers = suggestedAnswers.filter(ans => ans && ans.trim() !== "")
+                  const rawAnswers = suggestedAnswers.filter(ans => ans && ans.trim() !== "")
+                  const validAnswers: string[] = []
+                  rawAnswers.forEach((ans) => {
+                    const trimmed = ans.trim()
+                    const isContinuation =
+                      validAnswers.length > 0 &&
+                      /^[a-z]/i.test(trimmed) &&
+                      !/^(SUGGESTED|ALTERNATIVE|CONNECTED)/i.test(trimmed) &&
+                      (trimmed.startsWith("answer") || trimmed.startsWith("answers") || /^[a-z]/.test(ans))
+
+                    if (isContinuation) {
+                      const lastIdx = validAnswers.length - 1
+                      validAnswers[lastIdx] = validAnswers[lastIdx] + " " + ans
+                    } else {
+                      validAnswers.push(ans)
+                    }
+                  })
                   return (
                     <div className={cn("flex flex-col gap-6", validAnswers.length > 1 ? "relative pl-8" : "")}>
                       {/* Vertical dotted/dashed timeline line */}
