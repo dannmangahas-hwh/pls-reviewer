@@ -400,21 +400,23 @@ export function QuestionCard({
   const [isShowingAnswer, setIsShowingAnswer] = useState(false)
 
   return (
-    <Card className="mb-16 flex flex-row w-full items-stretch gap-4 md:gap-6 rounded-none border-none bg-transparent p-0 shadow-none ring-0 overflow-visible">
+    <Card className="mb-16 flex flex-col md:flex-row w-full items-stretch gap-4 md:gap-6 rounded-none border-none bg-transparent p-0 shadow-none ring-0 overflow-visible">
       {/* Left Sidebar */}
       <Card
         className={cn(
-          "flex shrink-0 flex-col items-center justify-start border border-gray-200/30 py-8 shadow-none transition-colors duration-300 md:w-[130px] rounded-none ring-0 overflow-visible",
+          "flex shrink-0 flex-row md:flex-col items-center md:justify-start justify-between border border-gray-200/30 px-6 py-4 md:py-8 md:px-0 shadow-none transition-colors duration-300 w-full md:w-[130px] rounded-none ring-0 overflow-visible",
           isShowingAnswer ? "bg-gold text-navy" : "bg-navy text-gold"
         )}
       >
-        <CardContent className="flex flex-col items-start gap-1 p-0 border-none bg-transparent shadow-none ring-0 overflow-visible">
-          <span className="text-3xl font-black leading-none">{year}</span>
-          {examType.split(" ").map((word, i) => (
-            <span key={i} className="text-3xl font-light leading-none tracking-wide">
-              {word}
-            </span>
-          ))}
+        <CardContent className="flex flex-row md:flex-col items-center md:items-start gap-2 md:gap-1 p-0 border-none bg-transparent shadow-none ring-0 overflow-visible">
+          <span className="text-2xl md:text-3xl font-black leading-none">{year}</span>
+          <div className="flex flex-row md:flex-col items-center md:items-start gap-1.5 md:gap-0">
+            {examType.split(" ").map((word, i) => (
+              <span key={i} className="text-base md:text-3xl font-light leading-none tracking-wide uppercase md:normal-case">
+                {word}
+              </span>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
