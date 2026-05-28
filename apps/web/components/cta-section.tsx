@@ -10,6 +10,7 @@ export function CTASection() {
           alt="Students studying"
           fill
           className="object-cover opacity-20"
+          sizes="100vw"
           priority
         />
         <div className="absolute inset-0 bg-[#1B2644]/60" />
@@ -48,6 +49,7 @@ export function CTASection() {
               alt="Gavel"
               fill
               className="scale-110 object-contain object-right drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] lg:scale-125"
+              sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
 

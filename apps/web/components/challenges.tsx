@@ -44,7 +44,6 @@ export function Challenges() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                quality={100}
                 priority
               />
             </div>
