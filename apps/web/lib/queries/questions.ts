@@ -15,7 +15,7 @@ export async function getTotalQuestionCount(): Promise<number> {
 export async function getQuestionsBySubject(subjectSlug: string): Promise<IQuestion[]> {
   await connectToDatabase()
   // Lean returns plain JS objects instead of Mongoose documents, which is faster and serializable for Next.js Server Components.
-  return Question.find({ subject_slug: subjectSlug }).lean()
+  return Question.find({ subject_slug: subjectSlug }).sort({ year: 1, section_id: 1, unique_id: 1 }).lean()
 }
 
 /**
@@ -23,7 +23,7 @@ export async function getQuestionsBySubject(subjectSlug: string): Promise<IQuest
  */
 export async function getQuestionsByTopic(topicSlug: string): Promise<IQuestion[]> {
   await connectToDatabase()
-  return Question.find({ syllabus_topic_slug: topicSlug }).lean()
+  return Question.find({ syllabus_topic_slug: topicSlug }).sort({ year: 1, section_id: 1, unique_id: 1 }).lean()
 }
 
 /**
@@ -42,7 +42,7 @@ export async function getQuestionsBySubtopic(
   if (subjectSlug) {
     filter.subject_slug = subjectSlug
   }
-  return Question.find(filter).lean()
+  return Question.find(filter).sort({ year: 1, section_id: 1, unique_id: 1 }).lean()
 }
 
 /**
