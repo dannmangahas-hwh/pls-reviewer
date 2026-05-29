@@ -10,8 +10,6 @@ import {
   Gavel,
   Building2,
   FileText,
-  ReceiptText,
-  Award,
   ChevronRight,
 } from "lucide-react"
 import {
@@ -25,7 +23,7 @@ import {
 
 import { subjectsData } from "@/lib/subjects"
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
   "political-law": Landmark,
   "labor-law": Briefcase,
   "civil-law": Users,

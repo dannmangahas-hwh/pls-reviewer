@@ -35,7 +35,7 @@ export async function getQuestionsBySubtopic(
   subjectSlug?: string
 ): Promise<IQuestion[]> {
   await connectToDatabase()
-  const filter: any = { syllabus_subtopic_slug: subtopicSlug }
+  const filter: Record<string, string> = { syllabus_subtopic_slug: subtopicSlug }
   if (topicSlug) {
     filter.syllabus_topic_slug = topicSlug
   }
@@ -78,7 +78,7 @@ export async function getTopicQuestionCounts(subjectSlug: string) {
 export async function getSubtopicQuestionCounts(topicSlug: string, subjectSlug?: string) {
   await connectToDatabase()
   
-  const match: any = { syllabus_topic_slug: topicSlug }
+  const match: Record<string, string> = { syllabus_topic_slug: topicSlug }
   if (subjectSlug) {
     match.subject_slug = subjectSlug
   }

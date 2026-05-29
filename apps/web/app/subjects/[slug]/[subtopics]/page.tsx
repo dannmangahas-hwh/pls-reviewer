@@ -26,7 +26,7 @@ export default async function SubtopicsPage(props: {
   if (!subject) notFound()
 
   const topic = subject.topics.find(
-    (t: any) =>
+    (t) =>
       t.slug === topicSlug ||
       t.title.toLowerCase().replace(/\s+/g, "-") === topicSlug
   )
@@ -84,7 +84,7 @@ export default async function SubtopicsPage(props: {
           {/* Subtopics List */}
           <div className="flex flex-col gap-6">
             {topic.subtopics && topic.subtopics.length > 0 ? (
-              topic.subtopics.map((sub: any, index: number) => {
+              topic.subtopics.map((sub, index: number) => {
                 const subSlug = sub.slug || sub.title.toLowerCase().replace(/\s+/g, "-")
                 return (
                   <Link key={index} href={`/subjects/${slug}/${topicSlug}/${subSlug}`} className="block">

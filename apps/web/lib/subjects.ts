@@ -54,6 +54,17 @@ const subjectMetadata: Record<string, { title: string; description: string; imag
   },
 }
 
+interface SyllabusSubtopic {
+  title: string
+  slug: string
+}
+
+interface SyllabusTopic {
+  title: string
+  slug: string
+  subtopics?: SyllabusSubtopic[]
+}
+
 // 2. Read and parse the syllabus dynamically
 function loadSyllabusData(): Record<string, SubjectData> {
   try {
@@ -61,19 +72,19 @@ function loadSyllabusData(): Record<string, SubjectData> {
 
     for (const subject of syllabus.subjects) {
       const slug = subject.slug
-      const meta = subjectMetadata[slug]
+      const meta = subjectMetadata[slug as keyof typeof subjectMetadata]
       
       if (meta) {
         data[slug] = {
           title: meta.title,
           description: meta.description,
           image: meta.image,
-          topics: subject.topics.map((t: any) => ({
+          topics: subject.topics.map((t: SyllabusTopic) => ({
             title: t.title,
             slug: t.slug,
             description: `Review historical questions for ${t.title}.`,
             difficulty: "Medium",
-            subtopics: t.subtopics?.map((sub: any) => ({
+            subtopics: t.subtopics?.map((sub: SyllabusSubtopic) => ({
               title: sub.title,
               slug: sub.slug,
               description: `Practice AI-classified bar questions regarding ${sub.title}.`,

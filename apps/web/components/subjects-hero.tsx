@@ -25,7 +25,7 @@ export function SubjectsHero() {
             Subject by Subject.”
           </h1>
           <p className="mt-8 max-w-5xl text-lg leading-relaxed font-light text-white/90 md:text-xl">
-            Your focused guide to mastering every bar exam topic, offering clear explanations, expertly organized subjects, and practice tools designed to build your confidence and ensure you're fully prepared for exam day.
+            Your focused guide to mastering every bar exam topic, offering clear explanations, expertly organized subjects, and practice tools designed to build your confidence and ensure you&apos;re fully prepared for exam day.
           </p>
         </div>
       </div>

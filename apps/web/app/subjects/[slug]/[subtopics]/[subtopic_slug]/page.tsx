@@ -31,7 +31,7 @@ export default async function QuestionsPage(props: {
   if (!subject) notFound()
 
   const topic = subject.topics.find(
-    (t: any) =>
+    (t) =>
       t.slug === topicSlug ||
       t.title.toLowerCase().replace(/\s+/g, "-") === topicSlug
   )
@@ -39,7 +39,7 @@ export default async function QuestionsPage(props: {
   if (!topic) notFound()
 
   const subtopic = topic.subtopics?.find(
-    (s: any) =>
+    (s) =>
       s.slug === subtopicSlug ||
       s.title.toLowerCase().replace(/\s+/g, "-") === subtopicSlug
   )
