@@ -5,10 +5,21 @@ import { HashtagsBanner } from "@/components/hashtags-banner"
 import { Badge } from "@workspace/ui/components/badge"
 import { Card, CardHeader, CardTitle, CardDescription } from "@workspace/ui/components/card"
 import { subjectsData } from "@/lib/subjects"
-import { mockQuestions } from "@/lib/mock-questions"
+import { getQuestionsBySubtopic } from "@/lib/queries/questions"
 import { QuestionCard } from "@/components/question-card"
 import headerBg from "@/public/Category.png"
 import justiceBg from "@/public/Category.png" // Mocking the lady justice background with existing bg
+
+const CHAIRPERSONS: Record<number | string, string> = {
+  2019: "Justice Estela M. Perlas-Bernabe",
+  2020: "Justice Marvic M.V.F. Leonen",
+  2021: "Justice Marvic M.V.F. Leonen",
+  2022: "Justice Alfredo Benjamin S. Caguioa",
+  2023: "Justice Ramon Paul L. Hernando",
+  2024: "Justice Mario V. Lopez",
+  2025: "Justice Amy C. Lazaro-Javier",
+  2026: "Justice Samuel H. Gaerlan",
+}
 
 export default async function QuestionsPage(props: {
   params: Promise<{ slug: string; subtopics: string; subtopic_slug: string }>
@@ -20,7 +31,7 @@ export default async function QuestionsPage(props: {
   if (!subject) notFound()
 
   const topic = subject.topics.find(
-    (t: any) =>
+    (t) =>
       t.slug === topicSlug ||
       t.title.toLowerCase().replace(/\s+/g, "-") === topicSlug
   )
@@ -28,12 +39,19 @@ export default async function QuestionsPage(props: {
   if (!topic) notFound()
 
   const subtopic = topic.subtopics?.find(
-    (s: any) =>
+    (s) =>
       s.slug === subtopicSlug ||
       s.title.toLowerCase().replace(/\s+/g, "-") === subtopicSlug
   )
 
   if (!subtopic) notFound()
+  
+  // Fetch real questions from MongoDB!
+  const questions = await getQuestionsBySubtopic(
+    subtopic.slug || subtopicSlug,
+    topic.slug || topicSlug,
+    slug
+  )
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -104,29 +122,35 @@ export default async function QuestionsPage(props: {
             </CardHeader>
           </Card>
 
-          {/* Subtopic Banner (Optional, keeping it subtle since mockup doesn't explicitly show it, 
-              but we need to know we are in WAGES etc.) 
-              Wait, the mockup specifically says "Master the laws..." which is LABOR STANDARDS. 
-              Let's just show the questions immediately below the banner.
-          */}
           <div className="mb-4 pt-4">
              <h3 className="text-xl font-bold text-navy uppercase border-b-2 border-gold/30 pb-2 inline-block mb-4">
-               {subtopic.title} Questions
+               {subtopic.title} Questions ({questions.length})
              </h3>
           </div>
 
           {/* Questions List */}
           <div className="flex flex-col gap-6">
-            {mockQuestions.map((q) => (
-              <QuestionCard
-                key={q.id}
-                year={q.year}
-                examType={q.examType}
-                questionText={q.questionText}
-                answerText={q.answerText}
-                chair={q.chair}
-              />
-            ))}
+            {questions.length > 0 ? (
+              questions.map((q) => (
+                <QuestionCard
+                  key={q.unique_id}
+                  year={q.year.toString()}
+                  examType="BAR EXAM"
+                  questionText={q.question_text}
+                  suggestedAnswers={q.suggested_answers || []}
+                  chair={CHAIRPERSONS[q.year] || "SUPREME COURT"}
+                />
+              ))
+            ) : (
+              <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
+                <p className="mb-2 text-2xl font-light text-muted-foreground">
+                  No questions found for this subtopic.
+                </p>
+                <p className="text-base text-muted-foreground/60">
+                  Our AI is still processing historical data. Check back later!
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </section>

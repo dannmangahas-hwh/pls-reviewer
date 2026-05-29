@@ -12,6 +12,7 @@ import {
   CardAction,
 } from "@workspace/ui/components/card"
 import { Badge } from "@workspace/ui/components/badge"
+import { getSubtopicQuestionCounts } from "@/lib/queries/questions"
 import headerBg from "@/public/Category.png"
 import { subjectsData } from "@/lib/subjects"
 
@@ -25,12 +26,14 @@ export default async function SubtopicsPage(props: {
   if (!subject) notFound()
 
   const topic = subject.topics.find(
-    (t: any) =>
+    (t) =>
       t.slug === topicSlug ||
       t.title.toLowerCase().replace(/\s+/g, "-") === topicSlug
   )
 
   if (!topic) notFound()
+
+  const subtopicCounts = await getSubtopicQuestionCounts(topic.slug || topicSlug, slug)
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -81,7 +84,7 @@ export default async function SubtopicsPage(props: {
           {/* Subtopics List */}
           <div className="flex flex-col gap-6">
             {topic.subtopics && topic.subtopics.length > 0 ? (
-              topic.subtopics.map((sub: any, index: number) => {
+              topic.subtopics.map((sub, index: number) => {
                 const subSlug = sub.slug || sub.title.toLowerCase().replace(/\s+/g, "-")
                 return (
                   <Link key={index} href={`/subjects/${slug}/${topicSlug}/${subSlug}`} className="block">
@@ -110,12 +113,20 @@ export default async function SubtopicsPage(props: {
                         </div>
 
                         <CardAction className="relative z-10 mt-4 flex flex-col items-start justify-center self-center md:mt-0 md:w-64 md:items-end">
-                          <Badge
-                            variant="outline"
-                            className="mb-6 border-gold/50 text-[10px] font-bold tracking-widest text-gold uppercase"
-                          >
-                            {sub.difficulty}
-                          </Badge>
+                          <div className="mb-6 flex flex-row gap-2">
+                            <Badge
+                              variant="outline"
+                              className="border-gold/50 text-[10px] font-bold tracking-widest text-gold uppercase"
+                            >
+                              {sub.difficulty}
+                            </Badge>
+                            <Badge
+                              variant="outline"
+                              className="border-white/20 text-[10px] font-bold tracking-widest text-white/80 uppercase bg-navy/50"
+                            >
+                              {subtopicCounts[subSlug] || 0} Qs
+                            </Badge>
+                          </div>
                           <div className="group/btn flex items-center gap-2 text-[10px] font-black tracking-[0.25em] text-gold uppercase transition-colors hover:text-gold/80">
                             START REVIEWING
                             <div className="flex items-center -space-x-1.5 opacity-90 transition-transform group-hover/btn:translate-x-1">

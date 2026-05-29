@@ -10,8 +10,6 @@ import {
   Gavel,
   Building2,
   FileText,
-  ReceiptText,
-  Award,
   ChevronRight,
 } from "lucide-react"
 import {
@@ -23,56 +21,16 @@ import {
   CardFooter,
 } from "@workspace/ui/components/card"
 
-const subjects = [
-  {
-    name: "POLITICAL",
-    suffix: "LAW",
-    topics: "Constitutional Law, Administrative Law, and Public Officers.",
-    icon: Landmark,
-  },
-  {
-    name: "LABOR",
-    suffix: "LAW",
-    topics: "Labor Standards, Labor Relations, and Social Legislation.",
-    icon: Briefcase,
-  },
-  {
-    name: "CIVIL",
-    suffix: "LAW",
-    topics: "Persons, Property, Obligations, and Contracts.",
-    icon: Users,
-  },
-  {
-    name: "CRIMINAL",
-    suffix: "LAW",
-    topics: "Revised Penal Code and Special Penal Laws.",
-    icon: Gavel,
-  },
-  {
-    name: "COMMERCIAL",
-    suffix: "LAW",
-    topics: "Corporation Law, Negotiable Instruments, and Insurance.",
-    icon: Building2,
-  },
-  {
-    name: "REMEDIAL",
-    suffix: "LAW",
-    topics: "Civil Procedure, Criminal Procedure, and Evidence.",
-    icon: FileText,
-  },
-  {
-    name: "TAXATION",
-    suffix: "LAW",
-    topics: "General Principles, Income Taxation, and Business Taxes.",
-    icon: ReceiptText,
-  },
-  {
-    name: "LEGAL ETHICS",
-    suffix: "LAW",
-    topics: "Legal Ethics, Judicial Ethics, and Practical Exercises.",
-    icon: Award,
-  },
-]
+import { subjectsData } from "@/lib/subjects"
+
+const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
+  "political-law": Landmark,
+  "labor-law": Briefcase,
+  "civil-law": Users,
+  "criminal-law": Gavel,
+  "commercial-law": Building2,
+  "remedial-law": FileText,
+}
 
 function SubjectsPage() {
   return (
@@ -82,12 +40,17 @@ function SubjectsPage() {
       {/* Grid Section */}
       <section className="container mx-auto mt-20 px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {subjects.map((subject) => {
-            const slug = `${subject.name.toLowerCase().replace(/\s+/g, "-")}-${subject.suffix.toLowerCase()}`
+          {Object.entries(subjectsData).map(([slug, subject]) => {
+            const Icon = iconMap[slug] || FileText
+            
+            // Split title for styling: e.g., "POLITICAL LAW" -> "POLITICAL" "LAW"
+            const parts = subject.title.split(" ")
+            const suffix = parts.pop() || ""
+            const name = parts.join(" ")
 
             return (
               <Link
-                key={subject.name}
+                key={slug}
                 href={`/subjects/${slug}`}
                 className="group block"
               >
@@ -95,7 +58,7 @@ function SubjectsPage() {
                   <CardHeader className="flex-none px-6 pb-2">
                     <div className="mb-4 flex items-start justify-between">
                       <div className="rounded-xl bg-gold/10 p-3 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-gold/20">
-                        <subject.icon
+                        <Icon
                           className="size-6 text-gold"
                           strokeWidth={1.5}
                         />
@@ -103,16 +66,16 @@ function SubjectsPage() {
                     </div>
                     <CardTitle className="text-2xl leading-none font-black tracking-tighter uppercase">
                       <span className="mb-1 block text-gold transition-colors group-hover:text-gold/90">
-                        {subject.name}
+                        {name}
                       </span>
                       <span className="font-bold text-white">
-                        {subject.suffix}
+                        {suffix}
                       </span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="flex-1 px-6 pb-4">
                     <CardDescription className="line-clamp-3 text-sm leading-relaxed font-light text-white/60 transition-colors group-hover:text-white/80">
-                      {subject.topics}
+                      {subject.description}
                     </CardDescription>
                   </CardContent>
                   <CardFooter className="mt-auto flex-none px-6 pt-0 pb-8">
