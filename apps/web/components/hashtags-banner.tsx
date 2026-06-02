@@ -1,29 +1,42 @@
-import { ChevronsRight } from "lucide-react";
+import { ChevronsRight } from "lucide-react"
 
 export function HashtagsBanner() {
   return (
-    <div className="bg-[#131A26] border-t border-white/5 py-4 px-6 relative z-10 w-full overflow-x-auto">
-      <div className="flex items-center justify-center md:justify-around min-w-max gap-8 px-4 text-sm font-medium">
+    <div
+      data-hashtags-banner
+      className="relative z-10 w-full overflow-x-auto border-t border-white/5 bg-[#131A26] px-6 py-4"
+    >
+      <div className="flex min-w-max items-center justify-center gap-8 px-4 text-sm font-medium md:justify-around">
         <div className="flex items-center gap-8">
-          <span className="text-gold/80 hover:text-gold transition-colors cursor-default">#BarExamPrep</span>
-          <ChevronsRight className="w-4 h-4 text-gold" />
+          <span className="cursor-default text-gold/80 transition-colors hover:text-gold">
+            #BarExamPrep
+          </span>
+          <ChevronsRight className="h-4 w-4 text-gold" />
         </div>
         <div className="flex items-center gap-8">
-          <span className="text-white/70 hover:text-white transition-colors cursor-default">#LawStudentLife</span>
-          <ChevronsRight className="w-4 h-4 text-white/70" />
+          <span className="cursor-default text-white/70 transition-colors hover:text-white">
+            #LawStudentLife
+          </span>
+          <ChevronsRight className="h-4 w-4 text-white/70" />
         </div>
         <div className="flex items-center gap-8">
-          <span className="text-gold/80 hover:text-gold transition-colors cursor-default">#HardWorkPaysOff</span>
-          <ChevronsRight className="w-4 h-4 text-gold" />
+          <span className="cursor-default text-gold/80 transition-colors hover:text-gold">
+            #HardWorkPaysOff
+          </span>
+          <ChevronsRight className="h-4 w-4 text-gold" />
         </div>
         <div className="flex items-center gap-8">
-          <span className="text-white/70 hover:text-white transition-colors cursor-default">#StudySmart</span>
-          <ChevronsRight className="w-4 h-4 text-white/70" />
+          <span className="cursor-default text-white/70 transition-colors hover:text-white">
+            #StudySmart
+          </span>
+          <ChevronsRight className="h-4 w-4 text-white/70" />
         </div>
         <div className="flex items-center gap-8">
-          <span className="text-gold/80 hover:text-gold transition-colors cursor-default">#FutureLawyer</span>
+          <span className="cursor-default text-gold/80 transition-colors hover:text-gold">
+            #FutureLawyer
+          </span>
         </div>
       </div>
     </div>
-  );
+  )
 }
