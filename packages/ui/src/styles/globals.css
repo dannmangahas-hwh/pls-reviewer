@@ -130,3 +130,20 @@
     @apply bg-background text-foreground;
     }
 }
+
+@keyframes slide-up-fade-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@layer utilities {
+  .animate-slide-up-fade-in {
+    animation: slide-up-fade-in 520ms ease-out both;
+  }
+}
