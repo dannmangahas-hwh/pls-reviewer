@@ -65,7 +65,16 @@ export default async function SubjectDetailPage(props: {
               TOPICS
             </h2>
             <p className="text-lg font-light text-muted-foreground">
-              Select a topic to view historical questions
+              Select a topic to view historical questions or open the topic&apos;s{" "}
+              <Link
+                href={data.syllabusUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-muted-foreground/60 underline-offset-4 transition-colors hover:text-navy hover:decoration-navy"
+              >
+                Syllabus
+              </Link>
+              .
             </p>
           </header>
 
