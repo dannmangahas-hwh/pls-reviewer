@@ -72,7 +72,7 @@ export default async function SubjectDetailPage(props: {
                 rel="noopener noreferrer"
                 className="underline decoration-muted-foreground/60 underline-offset-4 transition-colors hover:text-navy hover:decoration-navy"
               >
-                Syllabus
+                syllabus
               </Link>
               .
             </p>
