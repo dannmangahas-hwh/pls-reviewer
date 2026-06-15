@@ -3,23 +3,12 @@ import Image from "next/image";
 export function WhatYouGain() {
   return (
     <section className="relative flex min-h-[570px] w-full items-center overflow-hidden bg-[#1B2644] py-16 md:h-[570px] md:py-0">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/students-studying.png"
-          alt="Students studying in a library"
-          fill
-          className="object-cover opacity-45"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[#1B2644]/64" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B2644]/30 via-[#1B2644]/10 to-[#1B2644]/35" />
-      </div>
-      <div className="pointer-events-none absolute -left-[28%] top-1/2 z-[1] hidden h-[118%] w-[56%] -translate-y-1/2 md:block">
+      <div className="pointer-events-none absolute left-0 top-1/2 z-[1] hidden h-[118%] w-[56%] -translate-x-1/2 -translate-y-1/2 md:block">
         <Image
           src="/sampaguita-1.png"
           alt=""
           fill
-          className="object-contain object-left opacity-20"
+          className="object-contain opacity-20"
           sizes="50vw"
         />
       </div>

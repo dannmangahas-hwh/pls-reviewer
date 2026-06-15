@@ -5,8 +5,8 @@ export function CTASection() {
     <section className="relative min-h-[400px] w-full overflow-hidden bg-[#b51f2a] md:min-h-[450px] lg:min-h-[500px]">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/cta-bg.png"
-          alt="Students studying"
+          src="/graduation-bg.png"
+          alt="Graduation ceremony"
           fill
           className="object-cover opacity-70"
           sizes="100vw"
