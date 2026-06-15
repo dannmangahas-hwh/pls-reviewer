@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@workspace/ui/lib/utils"
@@ -24,11 +25,21 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "top-0 z-50 w-full border-b border-white/10 transition-colors",
-        pathname === "/subjects" ? "absolute bg-transparent" : "relative bg-black"
+        "top-0 z-50 w-full overflow-hidden border-b border-white/10 transition-colors",
+        pathname === "/subjects" ? "absolute bg-[#0645a8]/90" : "relative bg-[#0645a8]"
       )}
     >
-      <div className="container mx-auto flex h-24 items-center justify-between px-4">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 opacity-15 md:block">
+        <Image
+          src="/philippine-star.png"
+          alt=""
+          width={220}
+          height={220}
+          className="max-w-none"
+          priority
+        />
+      </div>
+      <div className="container relative mx-auto flex h-24 items-center justify-between px-4">
         <Link href="/" className="transition-opacity hover:opacity-90">
           <Logo />
         </Link>

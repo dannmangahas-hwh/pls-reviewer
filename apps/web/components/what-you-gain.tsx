@@ -2,8 +2,28 @@ import Image from "next/image";
 
 export function WhatYouGain() {
   return (
-    <section className="relative min-h-[570px] md:h-[570px] w-full overflow-hidden bg-[#101727] py-16 md:py-0 flex items-center">
-      <div className="pointer-events-none absolute right-0 top-0 z-0 h-full">
+    <section className="relative flex min-h-[570px] w-full items-center overflow-hidden bg-[#1B2644] py-16 md:h-[570px] md:py-0">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/students-studying.png"
+          alt="Students studying in a library"
+          fill
+          className="object-cover opacity-45"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[#1B2644]/64" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1B2644]/30 via-[#1B2644]/10 to-[#1B2644]/35" />
+      </div>
+      <div className="pointer-events-none absolute -left-[28%] top-1/2 z-[1] hidden h-[118%] w-[56%] -translate-y-1/2 md:block">
+        <Image
+          src="/sampaguita-1.png"
+          alt=""
+          fill
+          className="object-contain object-left opacity-20"
+          sizes="50vw"
+        />
+      </div>
+      <div className="pointer-events-none absolute right-0 top-0 z-[1] h-full">
         <Image
           src="/what-you-gain-image.png"
           alt="What you gain illustration"
