@@ -15,12 +15,15 @@ export function QuestionsList({ children }: QuestionsListProps) {
     if (hasStarted) return
 
     const handleScroll = () => {
-      const trigger =
-        document.querySelector("[data-hashtags-banner]") ?? triggerRef.current
-      if (!trigger) return
-
-      if (trigger.getBoundingClientRect().bottom <= 0) {
-        setHasStarted(true)
+      const banner = document.querySelector("[data-hashtags-banner]")
+      if (banner) {
+        if (banner.getBoundingClientRect().bottom <= 0) {
+          setHasStarted(true)
+        }
+      } else if (triggerRef.current) {
+        if (triggerRef.current.getBoundingClientRect().top <= window.innerHeight - 50) {
+          setHasStarted(true)
+        }
       }
     }
 
