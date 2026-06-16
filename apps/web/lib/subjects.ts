@@ -17,40 +17,47 @@ export type SubjectData = {
   title: string
   description: string
   image: string
+  syllabusUrl: string
   topics: Topic[]
 }
 
 // 1. Define standard metadata for the 6 subjects
-const subjectMetadata: Record<string, { title: string; description: string; image: string }> = {
+const subjectMetadata: Record<string, { title: string; description: string; image: string; syllabusUrl: string }> = {
   "political-law": {
     title: "POLITICAL LAW",
     description: "Study the structure of government, constitutional principles, and the limits of state power in relation to individual rights.",
     image: "/gavel-bg.svg",
+    syllabusUrl: "/syllabi/political-law.pdf",
   },
   "commercial-law": {
     title: "COMMERCIAL & TAXATION LAWS",
     description: "Understand the legal frameworks governing commerce, trade, corporate organizations, and the power of the state to impose taxes.",
     image: "/gavel-bg.svg",
+    syllabusUrl: "/syllabi/commercial-law.pdf",
   },
   "civil-law": {
     title: "CIVIL LAW",
     description: "Learn about the legal relationships between individuals, encompassing persons, family relations, property, and obligations.",
     image: "/gavel-bg.svg",
+    syllabusUrl: "/syllabi/civil-law.pdf",
   },
   "labor-law": {
     title: "LABOR LAW",
     description: "Understand the rules that govern employment, workers' rights, and employer responsibilities—key knowledge to navigate the workplace.",
     image: "/labor-law-bg.png",
+    syllabusUrl: "/syllabi/labor-law.pdf",
   },
   "criminal-law": {
     title: "CRIMINAL LAW",
     description: "Master the revised penal code, understanding crimes, public offenses, and their corresponding penalties under the law.",
     image: "/gavel-bg.svg",
+    syllabusUrl: "/syllabi/criminal-law.pdf",
   },
   "remedial-law": {
     title: "REMEDIAL & LEGAL ETHICS",
     description: "Study the rules of procedure, evidence, court jurisdiction, and the code of professional responsibility for lawyers.",
     image: "/gavel-bg.svg",
+    syllabusUrl: "/syllabi/remedial-law.pdf",
   },
 }
 
@@ -79,6 +86,7 @@ function loadSyllabusData(): Record<string, SubjectData> {
           title: meta.title,
           description: meta.description,
           image: meta.image,
+          syllabusUrl: meta.syllabusUrl,
           topics: subject.topics.map((t: SyllabusTopic) => ({
             title: t.title,
             slug: t.slug,

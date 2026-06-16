@@ -64,8 +64,17 @@ export default async function SubjectDetailPage(props: {
             <h2 className="mb-2 text-4xl font-black tracking-tight text-navy uppercase">
               TOPICS
             </h2>
-            <p className="text-lg font-light text-muted-foreground">
-              Select a topic to view historical questions
+            <p className="text-lg font-light text-black">
+              Select a topic to view historical questions or open the topic&apos;s{" "}
+              <Link
+                href={data.syllabusUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline underline-offset-4 transition-colors hover:text-navy"
+              >
+                syllabus
+              </Link>
+              .
             </p>
           </header>
 
