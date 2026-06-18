@@ -12,7 +12,7 @@ import {
 import { subjectsData } from "@/lib/subjects"
 import { getQuestionsBySubtopic } from "@/lib/queries/questions"
 import { QuestionCard } from "@/components/question-card"
-import { QuestionsList } from "@/components/questions-list"
+import { AnimatedList } from "@/components/animated-list"
 import headerBg from "@/public/Category.png"
 import justiceBg from "@/public/Category.png" // Mocking the lady justice background with existing bg
 
@@ -135,9 +135,9 @@ export default async function QuestionsPage(props: {
           </div>
 
           {/* Questions List */}
-          <QuestionsList>
-            {questions.length > 0 ? (
-              questions.map((q) => (
+          {questions.length > 0 ? (
+            <AnimatedList>
+              {questions.map((q) => (
                 <QuestionCard
                   key={q.unique_id}
                   year={q.year.toString()}
@@ -146,18 +146,18 @@ export default async function QuestionsPage(props: {
                   suggestedAnswers={q.suggested_answers || []}
                   chair={CHAIRPERSONS[q.year] || "SUPREME COURT"}
                 />
-              ))
-            ) : (
-              <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
-                <p className="mb-2 text-2xl font-light text-muted-foreground">
-                  No questions found for this subtopic.
-                </p>
-                <p className="text-base text-muted-foreground/60">
-                  Our AI is still processing historical data. Check back later!
-                </p>
-              </div>
-            )}
-          </QuestionsList>
+              ))}
+            </AnimatedList>
+          ) : (
+            <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
+              <p className="mb-2 text-2xl font-light text-muted-foreground">
+                No questions found for this subtopic.
+              </p>
+              <p className="text-base text-muted-foreground/60">
+                Our AI is still processing historical data. Check back later!
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </div>

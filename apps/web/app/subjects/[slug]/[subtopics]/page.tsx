@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { HashtagsBanner } from "@/components/hashtags-banner"
+import { AnimatedList } from "@/components/animated-list"
 import {
   Card,
   CardHeader,
@@ -82,9 +83,9 @@ export default async function SubtopicsPage(props: {
           </header>
 
           {/* Subtopics List */}
-          <div className="flex flex-col gap-6">
-            {topic.subtopics && topic.subtopics.length > 0 ? (
-              topic.subtopics.map((sub, index: number) => {
+          {topic.subtopics && topic.subtopics.length > 0 ? (
+            <AnimatedList>
+              {topic.subtopics.map((sub, index: number) => {
                 const subSlug = sub.slug || sub.title.toLowerCase().replace(/\s+/g, "-")
                 return (
                   <Link key={index} href={`/subjects/${slug}/${topicSlug}/${subSlug}`} className="block">
@@ -139,18 +140,18 @@ export default async function SubtopicsPage(props: {
                     </Card>
                   </Link>
                 )
-              })
-            ) : (
-              <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
-                <p className="mb-2 text-2xl font-light text-muted-foreground">
-                  Subtopics are being prepared for {topic.title}.
-                </p>
-                <p className="text-base text-muted-foreground/60">
-                  Check back later for updates on this topic.
-                </p>
-              </div>
-            )}
-          </div>
+              })}
+            </AnimatedList>
+          ) : (
+            <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
+              <p className="mb-2 text-2xl font-light text-muted-foreground">
+                Subtopics are being prepared for {topic.title}.
+              </p>
+              <p className="text-base text-muted-foreground/60">
+                Check back later for updates on this topic.
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </div>

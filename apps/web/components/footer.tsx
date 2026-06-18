@@ -12,11 +12,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-slate-200 bg-white py-12">
+    // Changed bg-white to bg-[#1B2644] and updated border color to a subtle white opacity
+    <footer className="w-full border-t border-white/10 bg-[#1B2644] py-12">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
           <Link href="/" className="hover:opacity-90 transition-opacity">
-            <Logo textClassName="text-[#06194b]" />
+            {/* Note: You might want to pass a different class to your Logo if its text was dark blue */}
+            <Logo textClassName="text-white" />
           </Link>
 
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
@@ -24,7 +26,8 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#06194b] text-[10px] font-medium tracking-[0.2em] hover:text-gold transition-colors"
+                // Changed text-[#06194b] to text-white/80 (or text-white)
+                className="text-white/80 text-[10px] font-medium tracking-[0.2em] hover:text-gold transition-colors"
               >
                 {link.label}
               </Link>
@@ -32,7 +35,8 @@ export function Footer() {
           </nav>
         </div>
 
-        <p className="text-[#06194b] text-[10px] font-medium tracking-[0.2em] whitespace-nowrap">
+        {/* Changed text-[#06194b] to text-white/60 */}
+        <p className="text-white/60 text-[10px] font-medium tracking-[0.2em] whitespace-nowrap">
           © {currentYear} PHILIPPINE LAW SOCIETY BAR EXAM REVIEWER
         </p>
       </div>
