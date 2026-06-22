@@ -79,10 +79,10 @@ export default async function QuestionsPage(props: {
 
         <div className="z-10 flex flex-1 flex-col justify-center px-6 md:px-12 lg:px-24">
           <div className="max-w-3xl pt-20 pb-10">
-            <h1 className="mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold uppercase md:text-6xl lg:text-7xl">
+            <h1 className="animate-slide-up-fade-in mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold uppercase md:text-6xl lg:text-7xl">
               {subject.title}
             </h1>
-            <p className="max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl">
+            <p className="animate-slide-up-fade-in max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
               {subject.description}
             </p>
           </div>
