@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { SubjectsHero } from "@/components/subjects-hero"
 import {
@@ -33,6 +33,12 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWi
 }
 
 function SubjectsPage() {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   return (
     <div className="flex min-h-screen flex-col bg-background pb-32">
       <SubjectsHero />
@@ -40,9 +46,10 @@ function SubjectsPage() {
       {/* Grid Section */}
       <section className="container mx-auto mt-20 px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {Object.entries(subjectsData).map(([slug, subject]) => {
+          {Object.entries(subjectsData).map(([slug, subject], index) => {
             const Icon = iconMap[slug] || FileText
-            
+            const delay = `${index * 90}ms`
+
             // Split title for styling: e.g., "POLITICAL LAW" -> "POLITICAL" "LAW"
             const parts = subject.title.split(" ")
             const suffix = parts.pop() || ""
@@ -54,7 +61,10 @@ function SubjectsPage() {
                 href={`/subjects/${slug}`}
                 className="group block"
               >
-                <Card className="relative flex aspect-square flex-col overflow-hidden rounded-2xl border-none bg-navy text-white transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-[0_20px_50px_rgba(0,31,63,0.3)]">
+                <Card
+                  className={`relative flex aspect-square flex-col overflow-hidden rounded-2xl border-none bg-navy text-white transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-[0_20px_50px_rgba(0,31,63,0.3)] ${isMounted ? "animate-slide-up-fade-in" : "opacity-0 translate-y-6"}`}
+                  style={{ animationDelay: delay }}
+                >
                   <CardHeader className="flex-none px-6 pb-2">
                     <div className="mb-4 flex items-start justify-between">
                       <div className="rounded-xl bg-gold/10 p-3 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-gold/20">

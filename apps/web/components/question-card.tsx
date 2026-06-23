@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useLayoutEffect, useMemo, useRef, useState } from "react"
 import { Award, CheckCircle2 } from "lucide-react"
 import { cn } from "@workspace/ui/lib/utils"
 import { Button } from "@workspace/ui/components/button"
@@ -17,7 +17,7 @@ interface QuestionCardProps {
 
 const cleanSpacingAnomalies = (text: string): string => {
   if (!text) return ""
-  
+
   let result = text
 
   // 1. Fix accidental double newlines that cut a sentence (followed by a lowercase letter that is not a list marker)
@@ -144,7 +144,7 @@ const cleanSpacingAnomalies = (text: string): string => {
     [/\bfrus\s+trate\b/gi, "frustrate"],
     [/\bsu\s+fficient\b/gi, "sufficient"],
     [/\bpr\s+ior\b/gi, "prior"],
-    
+
     // Additional PDF Extraction spacing anomaly repairs:
     [/\bprovi\s+ncial\b/gi, "provincial"],
     [/\bpro\s+vince\b/gi, "province"],
@@ -265,11 +265,11 @@ const cleanSpacingAnomalies = (text: string): string => {
 
   // 4. Fix spaces before punctuation (comma, semicolon, colon, period, question mark, exclamation mark)
   result = result.replace(/\s+([,;:!?])/g, "$1")
-  
+
   // Specific fix for "v ." -> "v."
   result = result.replace(/\bv\s+\.\b/gi, "v.")
   result = result.replace(/\bv\s+\./gi, "v.")
-  
+
   // Fix space before period, excluding ellipsis
   result = result.replace(/\s+\.(?!\.)/g, ".")
 
@@ -278,14 +278,17 @@ const cleanSpacingAnomalies = (text: string): string => {
 
   // 6. Dynamic Trailing Text Cleanups (Page numbers, separators, END OF PART, Panel of Experts list)
   // Strip ANNEX PANEL OF EXPERTS list (and anything following it) at the very end
-  result = result.replace(/\n+\s*(?:\d+\s+\n+)?(?:ANNEX\s+\n+)?PANEL\s+OF\s+EXPERTS[\s\S]*$/gi, "")
-  
+  result = result.replace(
+    /\n+\s*(?:\d+\s+\n+)?(?:ANNEX\s+\n+)?PANEL\s+OF\s+EXPERTS[\s\S]*$/gi,
+    ""
+  )
+
   // Strip END OF PART X lines
   result = result.replace(/\n+\s*END\s+OF\s+PART\s+[0-9IIVX]+\.?,?\s*$/gi, "")
-  
+
   // Strip trailing separators (like –  –, – –, - -)
   result = result.replace(/\n+\s*[-–—\s]+\s*$/g, "")
-  
+
   // Strip trailing standalone page numbers
   result = result.replace(/\n+\s*\d+\s*$/g, "")
 
@@ -294,34 +297,35 @@ const cleanSpacingAnomalies = (text: string): string => {
 
 const formatPdfText = (text: string): string => {
   if (!text) return ""
-  
+
   // Clean spacing anomalies before doing line-by-line formatting
   const cleanedText = cleanSpacingAnomalies(text)
-  
+
   // Split into paragraph blocks by double newlines (or more)
   const blocks = cleanedText.split(/\n\s*\n/)
-  
-  const cleanBlocks = blocks.map(block => {
-    const lines = block.split('\n')
+
+  const cleanBlocks = blocks.map((block) => {
+    const lines = block.split("\n")
     let result = ""
-    
+
     for (let i = 0; i < lines.length; i++) {
       const lineVal = lines[i]
       const currentLine = lineVal ? lineVal.trim() : ""
       if (!currentLine) continue
-      
+
       if (result === "") {
         result = currentLine
       } else {
         // If the current line starts with a list marker (e.g. "1.", "(a)", "-", "*")
         // Refined regex to avoid breaking inline parenthesized numbers like (15)
-        const isListMarker = /^\s*(\d+\.|\([a-z0-9]\)|\([ivx]+\)|[-*•])\s+/i.test(currentLine)
-        
+        const isListMarker =
+          /^\s*(\d+\.|\([a-z0-9]\)|\([ivx]+\)|[-*•])\s+/i.test(currentLine)
+
         // If the previous line ended with a colon
         const prevLineVal = lines[i - 1]
         const previousLine = prevLineVal ? prevLineVal.trim() : ""
-        const endsWithColon = previousLine.endsWith(':')
-        
+        const endsWithColon = previousLine.endsWith(":")
+
         if (isListMarker || endsWithColon) {
           result += "\n" + currentLine
         } else {
@@ -332,15 +336,19 @@ const formatPdfText = (text: string): string => {
     }
     return result
   })
-  
-  return cleanBlocks.filter(block => block.trim() !== "").join("\n\n").trim()
+
+  return cleanBlocks
+    .filter((block) => block.trim() !== "")
+    .join("\n\n")
+    .trim()
 }
 
 const parseAnswer = (ans: string) => {
-  let type: "suggested" | "alternative" | "connected-question" | "default" = "default"
+  let type: "suggested" | "alternative" | "connected-question" | "default" =
+    "default"
   let label = "Answer"
   let cleanText = ans.trim()
-  
+
   // 1. Connected Question
   const connectedMatch = cleanText.match(/^connected\s+question\s*:?/i)
   if (connectedMatch) {
@@ -351,7 +359,9 @@ const parseAnswer = (ans: string) => {
   }
 
   // 2. Alternative Answer (must match before suggested answer to handle "alternative suggested answer")
-  const alternativeMatch = cleanText.match(/^(alternative\s+suggested\s+answer|alternative\s+answers?)\s*:?/i)
+  const alternativeMatch = cleanText.match(
+    /^(alternative\s+suggested\s+answer|alternative\s+answers?)\s*:?/i
+  )
   if (alternativeMatch) {
     type = "alternative"
     const matchedStr = (alternativeMatch[1] ?? "").toLowerCase()
@@ -366,7 +376,9 @@ const parseAnswer = (ans: string) => {
   }
 
   // 3. Suggested Answer
-  const suggestedMatch = cleanText.match(/^(primary\s+suggested\s+answer|secondary\s+suggested\s+answer|suggested\s+answers?\s+to\s+the|suggested\s+answers?\s+\d+|suggested\s+answers?)\s*:?/i)
+  const suggestedMatch = cleanText.match(
+    /^(primary\s+suggested\s+answer|secondary\s+suggested\s+answer|suggested\s+answers?\s+to\s+the|suggested\s+answers?\s+\d+|suggested\s+answers?)\s*:?/i
+  )
   if (suggestedMatch) {
     type = "suggested"
     const matchedStr = (suggestedMatch[1] ?? "").toLowerCase()
@@ -386,8 +398,33 @@ const parseAnswer = (ans: string) => {
     cleanText = cleanText.substring(suggestedMatch[0].length).trim()
     return { type, label, text: cleanText }
   }
-  
+
   return { type, label, text: cleanText }
+}
+
+const buildValidAnswers = (suggestedAnswers: string[]) => {
+  const rawAnswers = suggestedAnswers.filter((ans) => ans && ans.trim() !== "")
+  const validAnswers: string[] = []
+
+  rawAnswers.forEach((ans) => {
+    const trimmed = ans.trim()
+    const isContinuation =
+      validAnswers.length > 0 &&
+      /^[a-z]/i.test(trimmed) &&
+      !/^(SUGGESTED|ALTERNATIVE|CONNECTED)/i.test(trimmed) &&
+      (trimmed.startsWith("answer") ||
+        trimmed.startsWith("answers") ||
+        /^[a-z]/.test(ans))
+
+    if (isContinuation) {
+      const lastIdx = validAnswers.length - 1
+      validAnswers[lastIdx] = validAnswers[lastIdx] + " " + ans
+    } else {
+      validAnswers.push(ans)
+    }
+  })
+
+  return validAnswers
 }
 
 export function QuestionCard({
@@ -398,21 +435,51 @@ export function QuestionCard({
   chair,
 }: QuestionCardProps) {
   const [isShowingAnswer, setIsShowingAnswer] = useState(false)
+  const [contentHeight, setContentHeight] = useState<number>()
+  const questionRef = useRef<HTMLDivElement>(null)
+  const answerRef = useRef<HTMLDivElement>(null)
+  const validAnswers = useMemo(
+    () => buildValidAnswers(suggestedAnswers),
+    [suggestedAnswers]
+  )
+
+  useLayoutEffect(() => {
+    const activeContent = isShowingAnswer
+      ? answerRef.current
+      : questionRef.current
+    if (!activeContent) return
+
+    const updateHeight = () => {
+      setContentHeight(activeContent.offsetHeight)
+    }
+
+    updateHeight()
+
+    const resizeObserver = new ResizeObserver(updateHeight)
+    resizeObserver.observe(activeContent)
+
+    return () => resizeObserver.disconnect()
+  }, [isShowingAnswer, questionText, validAnswers])
 
   return (
-    <Card className="mb-16 flex flex-col md:flex-row w-full items-stretch gap-4 md:gap-6 rounded-none border-none bg-transparent p-0 shadow-none ring-0 overflow-visible">
+    <Card className="mb-16 flex w-full flex-col items-stretch gap-4 overflow-visible rounded-none border-none bg-transparent p-0 shadow-none ring-0 md:flex-row md:gap-6">
       {/* Left Sidebar */}
       <Card
         className={cn(
-          "flex shrink-0 flex-row md:flex-col items-center md:justify-start justify-between border border-gray-200/30 px-6 py-4 md:py-8 md:px-0 shadow-none transition-colors duration-300 w-full md:w-[130px] rounded-none ring-0 overflow-visible",
+          "flex w-full shrink-0 flex-row items-center justify-between overflow-visible rounded-none border border-gray-200/30 px-6 py-4 shadow-none ring-0 transition-colors duration-300 md:w-[130px] md:flex-col md:justify-start md:px-0 md:py-8",
           isShowingAnswer ? "bg-gold text-navy" : "bg-navy text-gold"
         )}
       >
-        <CardContent className="flex flex-row md:flex-col items-center md:items-start gap-2 md:gap-1 p-0 border-none bg-transparent shadow-none ring-0 overflow-visible">
-          <span className="text-2xl md:text-3xl font-black leading-none">{year}</span>
-          <div className="flex flex-row md:flex-col items-center md:items-start gap-1.5 md:gap-0">
+        <CardContent className="flex flex-row items-center gap-2 overflow-visible border-none bg-transparent p-0 shadow-none ring-0 md:flex-col md:items-start md:gap-1">
+          <span className="text-2xl leading-none font-black md:text-3xl">
+            {year}
+          </span>
+          <div className="flex flex-row items-center gap-1.5 md:flex-col md:items-start md:gap-0">
             {examType.split(" ").map((word, i) => (
-              <span key={i} className="text-base md:text-3xl font-light leading-none tracking-wide uppercase md:normal-case">
+              <span
+                key={i}
+                className="text-base leading-none font-light tracking-wide uppercase md:text-3xl md:normal-case"
+              >
                 {word}
               </span>
             ))}
@@ -421,132 +488,133 @@ export function QuestionCard({
       </Card>
 
       {/* Main Content Area */}
-      <Card className="flex flex-1 flex-col justify-between gap-4 rounded-none border-none bg-transparent p-0 shadow-none ring-0 overflow-visible">
+      <Card className="flex flex-1 flex-col justify-between gap-4 overflow-visible rounded-none border-none bg-transparent p-0 shadow-none ring-0">
         {/* Text Box Container with Solid Shadow Offset */}
-        <Card className="block relative w-full rounded-none border-none bg-transparent p-0 pb-4 pr-4 shadow-none ring-0 overflow-visible gap-0">
+        <Card className="relative block w-full gap-0 overflow-visible rounded-none border-none bg-transparent p-0 pr-4 pb-4 shadow-none ring-0">
           {/* Solid neo-brutalist shadow block */}
-          <Card className="block absolute bottom-0 left-4 right-0 top-4 z-0 rounded-none border-none bg-navy p-0 shadow-none ring-0 overflow-visible gap-0" />
+          <Card className="absolute top-4 right-0 bottom-0 left-4 z-0 block gap-0 overflow-visible rounded-none border-none bg-navy p-0 shadow-none ring-0" />
 
           {/* Actual Text Box */}
-          <Card className="block relative z-10 rounded-none border border-gray-300 bg-white p-6 shadow-none md:p-8 ring-0 overflow-visible gap-0">
-            <CardContent className="p-0">
-              {isShowingAnswer ? (
-                (() => {
-                  const rawAnswers = suggestedAnswers.filter(ans => ans && ans.trim() !== "")
-                  const validAnswers: string[] = []
-                  rawAnswers.forEach((ans) => {
-                    const trimmed = ans.trim()
-                    const isContinuation =
-                      validAnswers.length > 0 &&
-                      /^[a-z]/i.test(trimmed) &&
-                      !/^(SUGGESTED|ALTERNATIVE|CONNECTED)/i.test(trimmed) &&
-                      (trimmed.startsWith("answer") || trimmed.startsWith("answers") || /^[a-z]/.test(ans))
-
-                    if (isContinuation) {
-                      const lastIdx = validAnswers.length - 1
-                      validAnswers[lastIdx] = validAnswers[lastIdx] + " " + ans
-                    } else {
-                      validAnswers.push(ans)
-                    }
-                  })
-                  return (
-                    <div className={cn("flex flex-col gap-6", validAnswers.length > 1 ? "relative pl-8" : "")}>
-                      {/* Vertical dotted/dashed timeline line */}
-                      {validAnswers.length > 1 && (
-                        <div className="absolute left-3 top-6 bottom-6 w-0.5 border-l-2 border-dashed border-slate-300 z-0" />
-                      )}
-                      {validAnswers.length > 0 ? (
-                        validAnswers.map((ans, idx) => {
-                          const { type, label, text } = parseAnswer(ans)
-                          const cleanText = formatPdfText(text)
-                          return (
-                            <div 
-                              key={idx} 
-                              className="relative"
-                            >
-                              {/* Timeline node dot */}
-                              {validAnswers.length > 1 && (
-                                <div 
-                                  className={cn(
-                                    "absolute -left-[25px] top-[26px] z-10 size-3 rounded-full border-2 bg-white",
-                                    type === "connected-question"
-                                      ? "border-indigo-500 bg-indigo-50"
-                                      : type === "suggested"
-                                      ? "border-amber-500 bg-amber-50"
-                                      : "border-slate-400 bg-slate-50"
-                                  )}
-                                />
-                              )}
-                              <div 
-                                className={cn(
-                                  "flex flex-col gap-3 rounded-none border p-5 transition-all duration-300",
-                                  type === "suggested" 
-                                    ? "bg-amber-50/40 border-amber-200/50 dark:bg-amber-950/5 dark:border-amber-900/20" 
-                                    : type === "alternative"
-                                    ? "bg-slate-50/40 border-slate-200/50 dark:bg-slate-900/5 dark:border-slate-800/20"
-                                    : type === "connected-question"
-                                    ? "bg-indigo-50/15 border-indigo-200/50 dark:bg-indigo-950/5 dark:border-indigo-900/20"
-                                    : "bg-gray-50/40 border-gray-200/50 dark:bg-gray-900/5 dark:border-gray-800/20"
-                                )}
-                              >
-                                <div className="flex items-center justify-between">
-                                  <Badge
-                                    variant="outline"
-                                    className={cn(
-                                      "rounded-full px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider",
-                                      type === "suggested"
-                                        ? "border-amber-500/30 bg-amber-100/70 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
-                                        : type === "alternative"
-                                        ? "border-slate-500/30 bg-slate-100/70 text-slate-800 dark:bg-slate-900/30 dark:text-slate-300"
-                                        : type === "connected-question"
-                                        ? "border-indigo-500/30 bg-indigo-100/70 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300"
-                                        : "border-gray-500/30 bg-gray-100/70 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
-                                    )}
-                                  >
-                                    {label}
-                                  </Badge>
-                                  {validAnswers.length > 1 && (
-                                    <span className="text-[11px] font-bold text-muted-foreground/60 uppercase tracking-widest">
-                                      PART {idx + 1}
-                                    </span>
-                                  )}
-                                </div>
-                                <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
-                                  {cleanText}
-                                </p>
-                              </div>
-                            </div>
-                          )
-                        })
-                      ) : (
-                        <p className="text-base font-light leading-relaxed text-muted-foreground italic">
-                          No suggested answer available.
-                        </p>
-                      )}
-                    </div>
-                  )
-                })()
-              ) : (
-                <p className="whitespace-pre-wrap text-base font-light leading-relaxed text-navy md:text-[17px]">
+          <Card className="relative z-10 block gap-0 overflow-hidden rounded-none border border-gray-300 bg-white p-6 shadow-none ring-0 md:p-8">
+            <CardContent
+              className="relative p-0 transition-[height] duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[height]"
+              style={contentHeight ? { height: contentHeight } : undefined}
+            >
+              <div
+                ref={questionRef}
+                aria-hidden={isShowingAnswer}
+                className={cn(
+                  "w-full transition-[opacity,filter,transform] duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity,filter,transform]",
+                  isShowingAnswer
+                    ? "pointer-events-none absolute inset-x-0 top-0 translate-y-1 opacity-0 blur-md"
+                    : "blur-0 relative translate-y-0 opacity-100"
+                )}
+              >
+                <p className="text-base leading-relaxed font-light whitespace-pre-wrap text-navy md:text-[17px]">
                   {formatPdfText(questionText)}
                 </p>
-              )}
+              </div>
+              <div
+                ref={answerRef}
+                aria-hidden={!isShowingAnswer}
+                className={cn(
+                  "w-full transition-[opacity,filter,transform] duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity,filter,transform]",
+                  isShowingAnswer
+                    ? "blur-0 relative translate-y-0 opacity-100"
+                    : "pointer-events-none absolute inset-x-0 top-0 -translate-y-1 opacity-0 blur-md"
+                )}
+              >
+                <div
+                  className={cn(
+                    "flex flex-col gap-6",
+                    validAnswers.length > 1 ? "relative pl-8" : ""
+                  )}
+                >
+                  {/* Vertical dotted/dashed timeline line */}
+                  {validAnswers.length > 1 && (
+                    <div className="absolute top-6 bottom-6 left-3 z-0 w-0.5 border-l-2 border-dashed border-slate-300" />
+                  )}
+                  {validAnswers.length > 0 ? (
+                    validAnswers.map((ans, idx) => {
+                      const { type, label, text } = parseAnswer(ans)
+                      const cleanText = formatPdfText(text)
+                      return (
+                        <div key={idx} className="relative">
+                          {/* Timeline node dot */}
+                          {validAnswers.length > 1 && (
+                            <div
+                              className={cn(
+                                "absolute top-[26px] -left-[25px] z-10 size-3 rounded-full border-2 bg-white",
+                                type === "connected-question"
+                                  ? "border-indigo-500 bg-indigo-50"
+                                  : type === "suggested"
+                                    ? "border-amber-500 bg-amber-50"
+                                    : "border-slate-400 bg-slate-50"
+                              )}
+                            />
+                          )}
+                          <div
+                            className={cn(
+                              "flex flex-col gap-3 rounded-none border p-5 transition-all duration-300",
+                              type === "suggested"
+                                ? "border-amber-200/50 bg-amber-50/40 dark:border-amber-900/20 dark:bg-amber-950/5"
+                                : type === "alternative"
+                                  ? "border-slate-200/50 bg-slate-50/40 dark:border-slate-800/20 dark:bg-slate-900/5"
+                                  : type === "connected-question"
+                                    ? "border-indigo-200/50 bg-indigo-50/15 dark:border-indigo-900/20 dark:bg-indigo-950/5"
+                                    : "border-gray-200/50 bg-gray-50/40 dark:border-gray-800/20 dark:bg-gray-900/5"
+                            )}
+                          >
+                            <div className="flex items-center justify-between">
+                              <Badge
+                                variant="outline"
+                                className={cn(
+                                  "rounded-full px-3 py-0.5 text-[10px] font-bold tracking-wider uppercase",
+                                  type === "suggested"
+                                    ? "border-amber-500/30 bg-amber-100/70 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
+                                    : type === "alternative"
+                                      ? "border-slate-500/30 bg-slate-100/70 text-slate-800 dark:bg-slate-900/30 dark:text-slate-300"
+                                      : type === "connected-question"
+                                        ? "border-indigo-500/30 bg-indigo-100/70 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300"
+                                        : "border-gray-500/30 bg-gray-100/70 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
+                                )}
+                              >
+                                {label}
+                              </Badge>
+                              {validAnswers.length > 1 && (
+                                <span className="text-[11px] font-bold tracking-widest text-muted-foreground/60 uppercase">
+                                  PART {idx + 1}
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-base leading-relaxed font-light whitespace-pre-wrap text-navy md:text-[17px]">
+                              {cleanText}
+                            </p>
+                          </div>
+                        </div>
+                      )
+                    })
+                  ) : (
+                    <p className="text-base leading-relaxed font-light text-muted-foreground italic">
+                      No suggested answer available.
+                    </p>
+                  )}
+                </div>
+              </div>
             </CardContent>
           </Card>
         </Card>
 
         {/* Footer Row */}
-        <CardFooter className="flex w-full flex-col items-start justify-between gap-4 p-0 sm:flex-row sm:items-stretch sm:gap-0 ring-0 overflow-visible">
+        <CardFooter className="flex w-full flex-col items-start justify-between gap-4 overflow-visible p-0 ring-0 sm:flex-row sm:items-stretch sm:gap-0">
           {/* Chair Block */}
-          <Card className="flex flex-row items-center gap-3 rounded-none border-none bg-navy px-6 py-5 shadow-none ring-0 overflow-visible">
+          <Card className="flex flex-row items-center gap-3 overflow-visible rounded-none border-none bg-navy px-6 py-5 shadow-none ring-0">
             <Award className="size-5 text-white" fill="white" />
             <CardContent className="flex flex-row items-center gap-1.5 p-0">
               <span className="text-[13px] font-bold tracking-wide text-gold uppercase">
                 CHAIR:
               </span>
-              <span className="text-[13px] font-light text-white">
-                {chair}
-              </span>
+              <span className="text-[13px] font-light text-white">{chair}</span>
             </CardContent>
           </Card>
 
@@ -555,14 +623,14 @@ export function QuestionCard({
             variant="default"
             onClick={() => setIsShowingAnswer(!isShowingAnswer)}
             className={cn(
-              "flex h-auto w-full cursor-pointer flex-row items-center justify-center gap-3 rounded-none border-none px-8 py-5 text-[11px] font-bold uppercase tracking-widest shadow-none transition-colors duration-300 sm:w-auto md:text-xs",
+              "flex h-auto w-full cursor-pointer flex-row items-center justify-center gap-3 rounded-none border-none px-8 py-5 text-[11px] font-bold tracking-widest uppercase shadow-none transition-colors duration-300 sm:w-auto md:text-xs",
               isShowingAnswer
                 ? "bg-gold text-navy hover:bg-gold/90"
                 : "bg-navy text-gold hover:bg-navy/90"
             )}
           >
             <CheckCircle2 className="size-5" />
-            VIEW ANSWER
+            {isShowingAnswer ? "VIEW QUESTION" : "VIEW ANSWER"}
           </Button>
         </CardFooter>
       </Card>

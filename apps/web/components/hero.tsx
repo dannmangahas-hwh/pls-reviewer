@@ -28,12 +28,12 @@ export function Hero() {
 
       <div className="z-10 flex flex-1 flex-col justify-center px-6 py-20 md:px-12 lg:px-24">
         <div className="max-w-2xl">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gold tracking-tight leading-[1.1]">
+          <h1 className="animate-slide-up-fade-in text-5xl md:text-6xl lg:text-7xl font-bold text-gold tracking-tight leading-[1.1]">
             Master the Bar.
             <br />
             Own Your Future.
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/90 max-w-xl font-light">
+          <p className="animate-slide-up-fade-in mt-6 text-lg md:text-xl text-white/90 max-w-xl font-light" style={{ animationDelay: "120ms" }}>
             Your all-in-one exam reviewer designed to sharpen your legal knowledge
             and boost your confidence—equipping you with expertly curated subjects,
             real past exams, and the tools you need to succeed.

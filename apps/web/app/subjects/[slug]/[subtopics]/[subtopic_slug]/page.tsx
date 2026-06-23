@@ -3,10 +3,16 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { HashtagsBanner } from "@/components/hashtags-banner"
 import { Badge } from "@workspace/ui/components/badge"
-import { Card, CardHeader, CardTitle, CardDescription } from "@workspace/ui/components/card"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@workspace/ui/components/card"
 import { subjectsData } from "@/lib/subjects"
 import { getQuestionsBySubtopic } from "@/lib/queries/questions"
 import { QuestionCard } from "@/components/question-card"
+import { AnimatedList } from "@/components/animated-list"
 import headerBg from "@/public/Category.png"
 import justiceBg from "@/public/Category.png" // Mocking the lady justice background with existing bg
 
@@ -45,7 +51,7 @@ export default async function QuestionsPage(props: {
   )
 
   if (!subtopic) notFound()
-  
+
   // Fetch real questions from MongoDB!
   const questions = await getQuestionsBySubtopic(
     subtopic.slug || subtopicSlug,
@@ -73,10 +79,10 @@ export default async function QuestionsPage(props: {
 
         <div className="z-10 flex flex-1 flex-col justify-center px-6 md:px-12 lg:px-24">
           <div className="max-w-3xl pt-20 pb-10">
-            <h1 className="mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold md:text-6xl lg:text-7xl uppercase">
+            <h1 className="animate-slide-up-fade-in mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold uppercase md:text-6xl lg:text-7xl">
               {subject.title}
             </h1>
-            <p className="max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl">
+            <p className="animate-slide-up-fade-in max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
               {subject.description}
             </p>
           </div>
@@ -90,18 +96,18 @@ export default async function QuestionsPage(props: {
       <section className="flex-1 bg-white px-6 py-12 md:px-12 lg:px-24">
         <div className="mx-auto max-w-5xl space-y-8">
           {/* Topic Banner Card */}
-          <Card className="relative overflow-hidden rounded-md bg-navy shadow-lg border-none">
+          <Card className="relative overflow-hidden rounded-md border-none bg-navy shadow-lg">
             <div className="absolute inset-0 z-0">
               <Image
                 src={justiceBg}
                 alt="Topic Background"
                 fill
-                className="object-cover opacity-30 grayscale mix-blend-overlay"
+                className="object-cover opacity-30 mix-blend-overlay grayscale"
               />
               <div className="absolute inset-0 bg-linear-to-r from-navy via-navy/90 to-transparent" />
             </div>
-            
-            <CardHeader className="relative z-10 flex flex-col items-start justify-between p-8 md:flex-row md:p-12 space-y-0">
+
+            <CardHeader className="relative z-10 flex flex-col items-start justify-between space-y-0 p-8 md:flex-row md:p-12">
               <div className="max-w-2xl space-y-4">
                 <CardTitle className="text-4xl font-black tracking-tight text-gold uppercase">
                   {topic.title}
@@ -110,7 +116,7 @@ export default async function QuestionsPage(props: {
                   {topic.description}
                 </CardDescription>
               </div>
-              
+
               <div className="mt-6 md:mt-0">
                 <Badge
                   variant="outline"
@@ -123,15 +129,15 @@ export default async function QuestionsPage(props: {
           </Card>
 
           <div className="mb-4 pt-4">
-             <h3 className="text-xl font-bold text-navy uppercase border-b-2 border-gold/30 pb-2 inline-block mb-4">
-               {subtopic.title} Questions ({questions.length})
-             </h3>
+            <h3 className="mb-4 inline-block border-b-2 border-gold/30 pb-2 text-xl font-bold text-navy uppercase">
+              {subtopic.title} Questions ({questions.length})
+            </h3>
           </div>
 
           {/* Questions List */}
-          <div className="flex flex-col gap-6">
-            {questions.length > 0 ? (
-              questions.map((q) => (
+          {questions.length > 0 ? (
+            <AnimatedList>
+              {questions.map((q) => (
                 <QuestionCard
                   key={q.unique_id}
                   year={q.year.toString()}
@@ -140,18 +146,18 @@ export default async function QuestionsPage(props: {
                   suggestedAnswers={q.suggested_answers || []}
                   chair={CHAIRPERSONS[q.year] || "SUPREME COURT"}
                 />
-              ))
-            ) : (
-              <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
-                <p className="mb-2 text-2xl font-light text-muted-foreground">
-                  No questions found for this subtopic.
-                </p>
-                <p className="text-base text-muted-foreground/60">
-                  Our AI is still processing historical data. Check back later!
-                </p>
-              </div>
-            )}
-          </div>
+              ))}
+            </AnimatedList>
+          ) : (
+            <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
+              <p className="mb-2 text-2xl font-light text-muted-foreground">
+                No questions found for this subtopic.
+              </p>
+              <p className="text-base text-muted-foreground/60">
+                Our AI is still processing historical data. Check back later!
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </div>

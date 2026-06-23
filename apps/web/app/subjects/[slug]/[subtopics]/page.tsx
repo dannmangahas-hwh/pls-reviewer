@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { HashtagsBanner } from "@/components/hashtags-banner"
+import { AnimatedList } from "@/components/animated-list"
 import {
   Card,
   CardHeader,
@@ -55,10 +56,10 @@ export default async function SubtopicsPage(props: {
 
         <div className="z-10 flex flex-1 flex-col justify-center px-6 md:px-12 lg:px-24">
           <div className="max-w-3xl pt-20 pb-10">
-            <h1 className="mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold md:text-6xl lg:text-7xl">
+            <h1 className="animate-slide-up-fade-in mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold md:text-6xl lg:text-7xl">
               {topic.title}
             </h1>
-            <p className="max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl">
+            <p className="animate-slide-up-fade-in max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
               {topic.description}
             </p>
           </div>
@@ -82,9 +83,9 @@ export default async function SubtopicsPage(props: {
           </header>
 
           {/* Subtopics List */}
-          <div className="flex flex-col gap-6">
-            {topic.subtopics && topic.subtopics.length > 0 ? (
-              topic.subtopics.map((sub, index: number) => {
+          {topic.subtopics && topic.subtopics.length > 0 ? (
+            <AnimatedList>
+              {topic.subtopics.map((sub, index: number) => {
                 const subSlug = sub.slug || sub.title.toLowerCase().replace(/\s+/g, "-")
                 return (
                   <Link key={index} href={`/subjects/${slug}/${topicSlug}/${subSlug}`} className="block">
@@ -139,18 +140,18 @@ export default async function SubtopicsPage(props: {
                     </Card>
                   </Link>
                 )
-              })
-            ) : (
-              <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
-                <p className="mb-2 text-2xl font-light text-muted-foreground">
-                  Subtopics are being prepared for {topic.title}.
-                </p>
-                <p className="text-base text-muted-foreground/60">
-                  Check back later for updates on this topic.
-                </p>
-              </div>
-            )}
-          </div>
+              })}
+            </AnimatedList>
+          ) : (
+            <div className="rounded-xl border-2 border-dashed border-border bg-muted/20 p-16 text-center">
+              <p className="mb-2 text-2xl font-light text-muted-foreground">
+                Subtopics are being prepared for {topic.title}.
+              </p>
+              <p className="text-base text-muted-foreground/60">
+                Check back later for updates on this topic.
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </div>
