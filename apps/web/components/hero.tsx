@@ -22,7 +22,6 @@ export function Hero() {
           alt="Gavel Background"
           fill
           className="object-contain object-right opacity-95"
-          priority
         />
       </div>
 
