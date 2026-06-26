@@ -1,59 +1,101 @@
+"use client"
+
 import Image from "next/image"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { cn } from "@workspace/ui/lib/utils"
+
+function FadeItem({
+  children,
+  visible,
+  index,
+  className,
+}: {
+  children: React.ReactNode
+  visible: boolean
+  index: number
+  className?: string
+}) {
+  return (
+    <div
+      className={cn(
+        "will-change-[opacity,transform]",
+        visible ? "animate-slide-up-fade-in" : "opacity-0 translate-y-6",
+        className
+      )}
+      style={{ animationDelay: `${index * 90}ms` }}
+    >
+      {children}
+    </div>
+  )
+}
 
 export function CTASection() {
+  const { ref, visible } = useScrollReveal(0.15)
+
   return (
-    <section className="relative min-h-[400px] w-full overflow-hidden bg-[#1B2644] md:min-h-[450px] lg:min-h-[500px]">
-      {/* Background Image with Overlay */}
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="relative min-h-[400px] w-full overflow-hidden bg-[#b51f2a] md:min-h-[450px] lg:min-h-[500px]"
+    >
+      {/* Background — completely static, never animated */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/cta-bg.png"
-          alt="Students studying"
+          src="/graduation-bg.png"
+          alt="Graduation ceremony"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-70"
+          sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-[#1B2644]/60" />
+        <div className="absolute inset-0 bg-[#b51f2a]/34" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#8f1523]/20 via-[#b51f2a]/0 to-[#8f1523]/10" />
       </div>
 
-      {/* Main Content Container */}
-      <div className="relative z-10 flex h-full min-h-100 w-full md:min-h-112.5 lg:min-h-125">
-        {/* Left Side: Text Content */}
-        <div className="flex flex-7 flex-col justify-center px-6 py-16 md:px-12 lg:flex-6 lg:pl-24">
-          <div className="max-w-4xl">
+      <div className="relative z-10 mx-auto flex min-h-100 w-full max-w-6xl items-center px-6 md:min-h-112.5 md:px-12 lg:min-h-125 lg:px-0">
+        <div className="w-full max-w-4xl py-16 lg:w-[62%]">
+
+          {/* "SECURE YOUR FUTURE" (index 0) */}
+          <FadeItem visible={visible} index={0}>
             <h2 className="ss text-4xl leading-[1.05] font-black tracking-tight text-gold md:text-5xl lg:text-6xl">
               SECURE YOUR FUTURE
             </h2>
+          </FadeItem>
+
+          {/* "IN THE CHAMBERS." (index 1) */}
+          <FadeItem visible={visible} index={1}>
             <h2 className="mb-8 text-4xl leading-[1.05] font-black tracking-tight text-white uppercase md:text-5xl lg:text-6xl">
               IN THE CHAMBERS.
             </h2>
+          </FadeItem>
 
-            <div className="max-w-xl space-y-4">
-              <p className="text-lg font-bold text-gold md:text-xl lg:text-2xl">
-                &quot;Pass the Bar with Confidence!&quot;
-              </p>
-              <p className="text-base leading-relaxed font-light text-white/90 md:text-lg lg:text-xl">
-                Your ultimate review hub—practice, learn, and master the law
-                anytime, anywhere. Hard work starts here, success follows.
-              </p>
-            </div>
-          </div>
+          {/* Subtext block (index 2) */}
+          <FadeItem visible={visible} index={2} className="flex max-w-xl flex-col gap-4">
+            <p className="text-lg font-bold text-gold md:text-xl lg:text-2xl">
+              &quot;Pass the Bar with Confidence!&quot;
+            </p>
+            <p className="text-base leading-relaxed font-light text-white/90 md:text-lg lg:text-xl">
+              Your ultimate review hub—practice, learn, and master the law
+              anytime, anywhere. Hard work starts here, success follows.
+            </p>
+          </FadeItem>
+
         </div>
 
-        {/* Right Side: Gavel and Gold Bar */}
-        <div className="relative flex flex-3 items-center justify-end lg:flex-4">
-          {/* Gavel Image - Overlaps both content and gold bar */}
-          <div className="pointer-events-none absolute right-[5%] z-20 h-[130%] w-[130%] md:right-[10%] lg:right-[15%]">
-            <Image
-              src="/cta-gavel.png"
-              alt="Gavel"
-              fill
-              className="scale-110 object-contain object-right drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] lg:scale-125"
-            />
-          </div>
+        {/* Gavel image — animates in as its own unit (index 3) */}
+        <FadeItem
+          visible={visible}
+          index={3}
+          className="pointer-events-none absolute bottom-[-14%] right-[-18%] top-[-14%] z-20 w-[78%] md:right-[-8%] md:w-[55%] lg:right-[-10%] lg:w-[48%]"
+        >
+          <Image
+            src="/cta-gavel.png"
+            alt="Gavel"
+            fill
+            className="object-contain object-right drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            sizes="(max-width: 768px) 80vw, 48vw"
+          />
+        </FadeItem>
 
-          {/* Gold vertical bar on the far right */}
-          <div className="z-10 h-full w-12 shrink-0 bg-gold md:w-24 lg:w-32" />
-        </div>
       </div>
     </section>
   )
