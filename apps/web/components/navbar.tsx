@@ -32,9 +32,10 @@ export function Navbar() {
   const isSubjects = pathname === "/subjects"
 
   return (
+    <>
     <header
       className={cn(
-        "top-0 z-50 w-full border-b border-white/10 transition-colors",
+        "top-0 z-50 w-full overflow-hidden border-b border-white/10 transition-colors",
         isSubjects ? "absolute bg-[#0645a8]/90" : "relative bg-[#0645a8]"
       )}
     >
@@ -110,12 +111,16 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown menu */}
+    </header>
+
+      {/* Mobile overlay menu — fixed so it floats over the page without pushing content */}
       <div
         className={cn(
-          "overflow-hidden transition-all duration-300 ease-in-out md:hidden",
-          isSubjects ? "bg-[#0645a8]/90" : "bg-[#0645a8]",
-          menuOpen ? "max-h-64 border-t border-white/10" : "max-h-0"
+          "fixed inset-x-0 z-40 md:hidden transition-all duration-300 ease-in-out",
+          "bg-[#0645a8] border-t border-white/10",
+          menuOpen
+            ? "top-16 opacity-100 pointer-events-auto"
+            : "-top-full opacity-0 pointer-events-none"
         )}
       >
         <nav className="container mx-auto flex flex-col px-4 py-2">
@@ -136,6 +141,6 @@ export function Navbar() {
           })}
         </nav>
       </div>
-    </header>
+    </>
   )
 }
