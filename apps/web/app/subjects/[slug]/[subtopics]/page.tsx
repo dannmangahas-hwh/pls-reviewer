@@ -39,7 +39,7 @@ export default async function SubtopicsPage(props: {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="relative flex min-h-[500px] flex-col overflow-hidden bg-navy pt-24 pb-12">
+      <section className="relative flex min-h-0 md:min-h-[500px] flex-col overflow-hidden bg-navy pt-16 md:pt-24 pb-6 md:pb-12">
         {/* Background Graphic */}
         <div className="pointer-events-none absolute inset-0 z-0">
           <Image
@@ -55,11 +55,11 @@ export default async function SubtopicsPage(props: {
         </div>
 
         <div className="z-10 flex flex-1 flex-col justify-center px-6 md:px-12 lg:px-24">
-          <div className="max-w-3xl pt-20 pb-10">
-            <h1 className="animate-slide-up-fade-in mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold md:text-6xl lg:text-7xl">
+          <div className="max-w-3xl pt-8 md:pt-20 pb-6 md:pb-10">
+            <h1 className="animate-slide-up-fade-in mb-6 text-3xl md:text-5xl leading-[1.1] font-bold tracking-tight text-gold md:text-6xl lg:text-7xl">
               {topic.title}
             </h1>
-            <p className="animate-slide-up-fade-in max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
+            <p className="animate-slide-up-fade-in max-w-2xl text-sm md:text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
               {topic.description}
             </p>
           </div>
@@ -70,14 +70,14 @@ export default async function SubtopicsPage(props: {
       <HashtagsBanner />
 
       {/* Subtopics Section */}
-      <section className="flex-1 bg-white px-6 py-24 md:px-12 lg:px-24">
+      <section className="flex-1 bg-white px-6 py-8 md:py-24 md:px-12 lg:px-24">
         <div className="mx-auto max-w-6xl space-y-12">
           {/* Section Header */}
           <header className="mb-10">
-            <h2 className="mb-2 text-4xl font-black tracking-tight text-navy uppercase">
+            <h2 className="mb-2 text-2xl md:text-4xl font-black tracking-tight text-navy uppercase">
               SUBTOPICS
             </h2>
-            <p className="text-lg font-light text-muted-foreground">
+            <p className="text-sm md:text-lg font-light text-muted-foreground">
               Select a sub-topic to view historical questions
             </p>
           </header>
@@ -90,7 +90,7 @@ export default async function SubtopicsPage(props: {
                 return (
                   <Link key={index} href={`/subjects/${slug}/${topicSlug}/${subSlug}`} className="block">
                     <Card
-                      className="group relative min-h-[140px] overflow-hidden rounded-lg border-none bg-navy py-0 shadow-md transition-all duration-300 hover:ring-2 hover:ring-gold hover:ring-offset-2"
+                      className="group relative min-h-0 overflow-hidden rounded-lg border-none bg-navy py-0 shadow-md transition-all duration-300 hover:ring-2 hover:ring-gold hover:ring-offset-2"
                     >
                       {/* Background Image with Overlay */}
                       <div className="absolute inset-0 z-0">
@@ -103,18 +103,18 @@ export default async function SubtopicsPage(props: {
                         <div className="absolute inset-0 bg-linear-to-r from-navy via-navy/95 to-navy/90" />
                       </div>
 
-                      <CardHeader className="relative z-10 items-center space-y-0 p-8 xl:px-12">
-                        <div className="flex-1 space-y-3">
-                          <CardTitle className="text-[28px] leading-none font-black tracking-tight text-gold uppercase transition-colors group-hover:text-gold/90">
+                      <CardHeader className="relative z-10 flex flex-col gap-3 p-5 md:items-center md:flex-row md:space-y-0 md:p-8 xl:px-12">
+                        <div className="flex-1 space-y-2">
+                          <CardTitle className="text-base md:text-[28px] leading-tight font-black tracking-tight text-gold uppercase transition-colors group-hover:text-gold/90">
                             {sub.title}
                           </CardTitle>
-                          <CardDescription className="max-w-4xl text-[15px] leading-relaxed font-light text-white/70">
+                          <CardDescription className="max-w-4xl text-xs md:text-[15px] leading-relaxed font-light text-white/70">
                             {sub.description}
                           </CardDescription>
                         </div>
 
-                        <CardAction className="relative z-10 mt-4 flex flex-col items-start justify-center self-center md:mt-0 md:w-64 md:items-end">
-                          <div className="mb-6 flex flex-row gap-2">
+                        <CardAction className="relative z-10 flex flex-col items-start justify-center self-start md:self-center md:w-64 md:items-end">
+                          <div className="mb-3 md:mb-6 flex flex-row gap-2">
                             <Badge
                               variant="outline"
                               className="border-gold/50 text-[10px] font-bold tracking-widest text-gold uppercase"

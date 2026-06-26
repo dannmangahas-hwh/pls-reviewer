@@ -54,26 +54,25 @@ export function CTASection() {
       <div className="relative z-10 mx-auto flex min-h-100 w-full max-w-6xl items-center px-6 md:min-h-112.5 md:px-12 lg:min-h-125 lg:px-0">
         <div className="w-full max-w-4xl py-16 lg:w-[62%]">
 
-          {/* "SECURE YOUR FUTURE" (index 0) */}
           <FadeItem visible={visible} index={0}>
-            <h2 className="ss text-4xl leading-[1.05] font-black tracking-tight text-gold md:text-5xl lg:text-6xl">
+            <h2 className="ss text-2xl md:text-4xl lg:text-6xl leading-[1.05] font-black tracking-tight text-gold">
               SECURE YOUR FUTURE
             </h2>
           </FadeItem>
 
           {/* "IN THE CHAMBERS." (index 1) */}
           <FadeItem visible={visible} index={1}>
-            <h2 className="mb-8 text-4xl leading-[1.05] font-black tracking-tight text-white uppercase md:text-5xl lg:text-6xl">
+            <h2 className="mb-5 md:mb-8 text-2xl md:text-4xl lg:text-6xl leading-[1.05] font-black tracking-tight text-white uppercase">
               IN THE CHAMBERS.
             </h2>
           </FadeItem>
 
           {/* Subtext block (index 2) */}
           <FadeItem visible={visible} index={2} className="flex max-w-xl flex-col gap-4">
-            <p className="text-lg font-bold text-gold md:text-xl lg:text-2xl">
+            <p className="text-base md:text-lg lg:text-2xl font-bold text-gold">
               &quot;Pass the Bar with Confidence!&quot;
             </p>
-            <p className="text-base leading-relaxed font-light text-white/90 md:text-lg lg:text-xl">
+            <p className="text-sm md:text-base lg:text-xl leading-relaxed font-light text-white/90">
               Your ultimate review hub—practice, learn, and master the law
               anytime, anywhere. Hard work starts here, success follows.
             </p>
@@ -85,7 +84,7 @@ export function CTASection() {
         <FadeItem
           visible={visible}
           index={3}
-          className="pointer-events-none absolute bottom-[-14%] right-[-18%] top-[-14%] z-20 w-[78%] md:right-[-8%] md:w-[55%] lg:right-[-10%] lg:w-[48%]"
+          className="pointer-events-none absolute bottom-[-14%] right-[-18%] top-[-14%] z-20 hidden md:block w-[78%] md:right-[-8%] md:w-[55%] lg:right-[-10%] lg:w-[48%]"
         >
           <Image
             src="/cta-gavel.png"
