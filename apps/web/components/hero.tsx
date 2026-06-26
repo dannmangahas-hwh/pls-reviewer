@@ -16,15 +16,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-0 hidden md:block w-full md:w-[68%] lg:w-[58%]">
-        <Image
-          src="/gavel-hero.png"
-          alt="Gavel Background"
-          fill
-          className="object-contain object-right opacity-95"
-        />
-      </div>
-
       <div className="z-10 flex flex-1 flex-col justify-center px-6 py-10 md:py-20 md:px-12 lg:px-24">
         <div className="max-w-2xl">
           <h1 className="animate-slide-up-fade-in text-3xl md:text-5xl lg:text-7xl font-bold text-gold tracking-tight leading-[1.1]">
