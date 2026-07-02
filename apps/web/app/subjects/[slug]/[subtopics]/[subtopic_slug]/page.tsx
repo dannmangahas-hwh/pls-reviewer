@@ -62,7 +62,7 @@ export default async function QuestionsPage(props: {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section (Subject Level) */}
-      <section className="relative flex min-h-[500px] flex-col overflow-hidden bg-navy pt-24 pb-12">
+      <section className="relative flex min-h-0 md:min-h-[500px] flex-col overflow-hidden bg-navy pt-16 md:pt-24 pb-6 md:pb-12">
         {/* Background Graphic */}
         <div className="pointer-events-none absolute inset-0 z-0">
           <Image
@@ -78,11 +78,11 @@ export default async function QuestionsPage(props: {
         </div>
 
         <div className="z-10 flex flex-1 flex-col justify-center px-6 md:px-12 lg:px-24">
-          <div className="max-w-3xl pt-20 pb-10">
-            <h1 className="animate-slide-up-fade-in mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold uppercase md:text-6xl lg:text-7xl">
+          <div className="max-w-3xl pt-8 md:pt-20 pb-6 md:pb-10">
+            <h1 className="animate-slide-up-fade-in mb-6 text-3xl md:text-5xl leading-[1.1] font-bold tracking-tight text-gold uppercase md:text-6xl lg:text-7xl">
               {subject.title}
             </h1>
-            <p className="animate-slide-up-fade-in max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
+            <p className="animate-slide-up-fade-in max-w-2xl text-sm md:text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
               {subject.description}
             </p>
           </div>
@@ -108,11 +108,11 @@ export default async function QuestionsPage(props: {
             </div>
 
             <CardHeader className="relative z-10 flex flex-col items-start justify-between space-y-0 p-8 md:flex-row md:p-12">
-              <div className="max-w-2xl space-y-4">
-                <CardTitle className="text-4xl font-black tracking-tight text-gold uppercase">
+              <div className="max-w-2xl space-y-3 md:space-y-4">
+                <CardTitle className="text-2xl md:text-4xl font-black tracking-tight text-gold uppercase">
                   {topic.title}
                 </CardTitle>
-                <CardDescription className="text-[15px] leading-relaxed font-light text-white/80">
+                <CardDescription className="text-xs md:text-[15px] leading-relaxed font-light text-white/80">
                   {topic.description}
                 </CardDescription>
               </div>

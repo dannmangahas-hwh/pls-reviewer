@@ -28,7 +28,7 @@ export default async function SubjectDetailPage(props: {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="relative flex min-h-[500px] flex-col overflow-hidden bg-navy pt-24 pb-12">
+      <section className="relative flex min-h-0 md:min-h-[500px] flex-col overflow-hidden bg-navy pt-16 md:pt-24 pb-6 md:pb-12">
         {/* Background Graphic */}
         <div className="pointer-events-none absolute top-0 right-0 bottom-0 z-0 w-full md:w-[65%] lg:w-[55%]">
           <Image
@@ -43,11 +43,11 @@ export default async function SubjectDetailPage(props: {
         </div>
 
         <div className="z-10 flex flex-1 flex-col justify-center px-6 md:px-12 lg:px-24">
-          <div className="max-w-3xl pt-20 pb-10">
-            <h1 className="animate-slide-up-fade-in mb-6 text-5xl leading-[1.1] font-bold tracking-tight text-gold md:text-6xl lg:text-7xl">
+          <div className="max-w-3xl pt-8 md:pt-20 pb-6 md:pb-10">
+            <h1 className="animate-slide-up-fade-in mb-6 text-3xl md:text-5xl leading-[1.1] font-bold tracking-tight text-gold md:text-6xl lg:text-7xl">
               {data.title}
             </h1>
-            <p className="animate-slide-up-fade-in max-w-2xl text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
+            <p className="animate-slide-up-fade-in max-w-2xl text-sm md:text-lg leading-relaxed font-light text-white/90 md:text-xl" style={{ animationDelay: "120ms" }}>
               {data.description}
             </p>
           </div>
@@ -58,14 +58,14 @@ export default async function SubjectDetailPage(props: {
       <HashtagsBanner />
 
       {/* Topics Section */}
-      <section className="flex-1 bg-white px-6 py-24 md:px-12 lg:px-24">
+      <section className="flex-1 bg-white px-6 py-8 md:py-24 md:px-12 lg:px-24">
         <div className="mx-auto max-w-6xl space-y-12">
           {/* Section Header */}
           <header className="mb-10">
-            <h2 className="mb-2 text-4xl font-black tracking-tight text-navy uppercase">
+            <h2 className="mb-2 text-2xl md:text-4xl font-black tracking-tight text-navy uppercase">
               TOPICS
             </h2>
-            <p className="text-lg font-light text-black">
+            <p className="text-sm md:text-lg font-light text-black">
               Select a topic to view historical questions or open the topic&apos;s{" "}
               <Link
                 href={data.syllabusUrl}
@@ -90,21 +90,21 @@ export default async function SubjectDetailPage(props: {
                     href={`/subjects/${slug}/${topicSlug}`}
                     className="group block"
                   >
-                    <Card className="relative min-h-[140px] rounded-lg border-none bg-navy py-0 shadow-md transition-all duration-300">
+                    <Card className="relative min-h-0 rounded-lg border-none bg-navy py-0 shadow-md transition-all duration-300">
                       {/* Subtle Background Styling per User Instructions (No image) */}
                       <div className="pointer-events-none absolute inset-0 z-0 bg-linear-to-r from-navy via-navy/95 to-navy/90" />
 
-                      <CardHeader className="relative z-10 items-center space-y-0 p-8 xl:px-12">
-                        <div className="flex-1 space-y-3">
-                          <CardTitle className="text-[28px] leading-none font-black tracking-tight text-gold uppercase transition-colors group-hover:text-gold/90">
+                      <CardHeader className="relative z-10 flex flex-col gap-3 p-5 md:flex-row md:items-center md:space-y-0 md:p-8 xl:px-12">
+                        <div className="flex-1 space-y-2">
+                          <CardTitle className="text-base md:text-[28px] leading-tight font-black tracking-tight text-gold uppercase transition-colors group-hover:text-gold/90">
                             {topic.title}
                           </CardTitle>
-                          <CardDescription className="max-w-4xl text-[15px] leading-relaxed font-light text-white/70">
+                          <CardDescription className="max-w-4xl text-xs md:text-[15px] leading-relaxed font-light text-white/70">
                             {topic.description}
                           </CardDescription>
                         </div>
 
-                        <CardAction className="relative z-10 mt-4 flex flex-col items-start justify-center self-center md:mt-0 md:w-64 md:items-end">
+                        <CardAction className="relative z-10 flex flex-col items-start justify-center self-start md:self-center md:w-64 md:items-end">
                           <div className="group/btn flex items-center gap-2 text-[10px] font-black tracking-[0.25em] text-gold uppercase transition-colors hover:text-gold/80">
                             START REVIEWING
                             <div className="flex items-center -space-x-1.5 opacity-90 transition-transform group-hover/btn:translate-x-1">
